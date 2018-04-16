@@ -1,187 +1,62 @@
-#include "i2cslave.h"
-#include "mcu_api.h"
+#include <util/twi.h>
+#include <avr/interrupt.h>
 
-unsigned char DATA_REGISTER;
+#include "I2CSlave.h"
 
-void init() {
-	gpio_setup(SDAGPIO, 0);
-	gpio_setup(SCLGPIO, 0);
-	gpio_register_interrupt(SDAGPIO, 0, int_SDA);
-}
+static void (*I2C_recv)(uint8_t);		//isr routines for i2c
+static void (*I2C_req)();
 
-int SDA() {
-	return gpio_read(SDAGPIO);
-}
-
-int SCL() {
-	return gpio_read(SCLGPIO);
-}
-
-void drive_SDA_high() {
-	gpio_write(SDAGPIO, 1);
-}
-
-void drive_SDA_low() {
-	gpio_write(SDAGPIO, 0);
-}
-
-/**
-* Interrupt handler for SDA falling edge.
-*
-* Checks if start condition is present and
-* either exits the ISR or continues to receive
-* the address.
-*
-* After that send or receives according to the R/W bit.
-*/
-int int_SDA()
+void I2C_setCallbacks(void (*recv)(uint8_t), void (*req)())
 {
-	char retval;
-
-	// SDA low and SCL is high == start condition
-
-	if (SCL()) {
-		retval = I2C_START_DETECTED;
-		debug_print(DBG_INFO, "start!\n");
-	} else {
-		return IRQ_HANDLED;
-	}
-
-	while(retval == I2C_START_DETECTED) {
-
-		retval = read_slave_byte();  // read address byte
-
-		if ((retval & 0xfffe) != I2C_SLAVE_ADDR) {
-			break;  // Wrong address or stop
-		}
-
-		// Receive or send data according to the R/W bit of the address byte
-		if (retval & 1) {
-			debug_print(DBG_INFO, "send\n");
-			retval = send_data();
-		} else {
-			debug_print(DBG_INFO, "receive\n");
-			retval = receive_data();
-		}
-
-	}
-	return IRQ_HANDLED;
+  I2C_recv = recv;
+  I2C_req = req;
 }
 
-/**
-* Called always after start.
-* Reads the address byte and sends ACK if address matches.
-* @param addrMatch
-*/
-char read_slave_byte() {
-
-	int i;
-	char value = 0;
-
-	for (i = 0; i < 8; ++i) {
-
-		debug_print(DBG_INFO, "scl 0\n");
-		while (!SCL());
-		debug_print(DBG_INFO, "scl 1\n");
-		value = (value << 1) | SDA();
-
-		while (SCL()) {
-
-			// If SDA changes while SCL is high, it's a
-			// stop (low to high) or start (high to low) condition.
-			if ((value & 1) != SDA())  {
-
-				if (SDA()) {
-					debug_print(DBG_INFO, "stop\n");
-					return I2C_STOP_DETECTED;
-				} else {
-					debug_print(DBG_INFO, "start\n");
-					return I2C_START_DETECTED;
-				}
-
-			}
-		}
-	}
-
-	// Send ACK
-	if ((value & 0xfe) == I2C_SLAVE_ADDR) {
-		debug_print(DBG_INFO, "ACK\n");
-		drive_SDA_low();
-		while (!SCL());
-		while (SCL());
-		drive_SDA_high();
-
-	// Address is not right
-	} else {
-		debug_print(DBG_INFO, "addr mismatch\n");
-		return I2C_ADDR_MISMATCH;
-	}
-
-	return value;
+void I2C_init(uint8_t address)
+{
+  cli();
+  // load address into TWI address register
+  TWAR = address << 1;
+  // set the TWCR to enable address matching and enable TWI, clear TWINT, enable TWI interrupt
+  TWCR = (1<<TWIE) | (1<<TWEA) | (1<<TWINT) | (1<<TWEN);
+  sei();
 }
 
-/**
-* Send data if master has issued read
-*/
-int send_data() {
-
-	int i;
-	for(i = 0; i < 8; ++i) {
-
-		while(SCL());
-
-		if((DATA_REGISTER >> (7 - i)) & 1) {
-			drive_SDA_high();
-		} else {
-			drive_SDA_low();
-		}
-		while(!SCL());
-	}
-
-	while(SCL());
-	drive_SDA_high();
-	while(!SCL());
-
-	if(!SDA()) {
-		return I2C_START_DETECTED;
-	} else {
-		return I2C_STOP_DETECTED;
-	}
+void I2C_stop(void)
+{
+  // clear acknowledge and enable bits
+  cli();
+  TWCR = 0;
+  TWAR = 0;
+  sei();
 }
 
-/**
-* Receive data if master has issued write
-*/
-int receive_data() {
-
-	int retval = 0;
-
-	int i;
-	for (i = 0; i < 8; ++i) {
-
-		while (!SCL());
-		DATA_REGISTER = (DATA_REGISTER << 1) | SDA();
-
-		while (SCL()) {
-
-			if ((DATA_REGISTER & 1) != SDA())  {
-				if (SDA()) {
-					return I2C_STOP_DETECTED;
-				} else {
-					return I2C_START_DETECTED;
-				}
-			}
-		}
-	}
-
-	// send ACK
-
-	drive_SDA_low();
-	while (!SCL());
-	while (SCL());
-	drive_SDA_high();
-
-	return I2C_START_DETECTED;
-
-}
-
+ISR(TWI_vect)
+{
+  switch(TW_STATUS)
+  {
+    case TW_SR_DATA_ACK:
+      // received data from master, call the receive callback
+      I2C_recv(TWDR); 
+      TWCR = (1<<TWIE) | (1<<TWINT) | (1<<TWEA) | (1<<TWEN);
+      break;
+    case TW_ST_SLA_ACK:
+      // master is requesting data, call the request callback
+      I2C_req();
+      TWCR = (1<<TWIE) | (1<<TWINT) | (1<<TWEA) | (1<<TWEN);
+      break;
+    case TW_ST_DATA_ACK:
+      // master is requesting data, call the request callback
+      I2C_req();
+      TWCR = (1<<TWIE) | (1<<TWINT) | (1<<TWEA) | (1<<TWEN);
+      break;
+    case TW_BUS_ERROR:
+      // some sort of erroneous state, prepare TWI to be readdressed
+      TWCR = 0;
+      TWCR = (1<<TWIE) | (1<<TWINT) | (1<<TWEA) | (1<<TWEN); 
+      break;
+    default:
+      TWCR = (1<<TWIE) | (1<<TWINT) | (1<<TWEA) | (1<<TWEN);
+      break;
+  }
+} 

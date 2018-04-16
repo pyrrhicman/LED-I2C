@@ -1,29 +1,18 @@
-#ifndef I2CSLAVE_H_
-#define I2CSLAVE_H_
+#ifndef I2C_SLAVE_H
+#define I2C_SLAVE_H
 
-// MRAA pin 7 == GP20 == GPIO-20 == I2C-1-SDA
-// MRAA pin 19 == GP19 == GPIO-19 == I2C-1-SCL
-#define SDAGPIO 20
-#define SCLGPIO 19
+#include <avr/interrupt.h>
+#include <stdint.h>
 
-#define I2C_SLAVE_ADDR 0x25
-#define I2C_START_DETECTED 0x01
-#define I2C_STOP_DETECTED 0x02
-#define I2C_ADDR_MISMATCH 0x03
+void I2C_init(uint8_t address);
+void I2C_stop(void);
+void I2C_setCallbacks(void (*recv)(uint8_t), void (*req)());
 
-void init();
+inline void __attribute__((always_inline)) I2C_transmitByte(uint8_t data)
+{
+  TWDR = data;
+}
 
-int SDA();
-int SCL();
+ISR(TWI_vect);
 
-void drive_SDA_high();
-void drive_SDA_low();
-
-int int_SDA();
-char read_slave_byte();
-
-int send_data();
-int receive_data();
-
-
-#endif /* I2CSLAVE_H_ */
+#endif
