@@ -13,7 +13,7 @@ volatile uint8_t i2c_RX_buff, i2c_TX_buff;
 volatile unsigned char RX_point=0, TX_point=0;
 volatile bool i2c_packet_reveived=false;
 
-#define I2C_ADDR 0x10
+#define I2C_ADDR 0b00000010
 volatile uint8_t data;
 
 void I2C_received(uint8_t received_data){

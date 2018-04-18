@@ -15,11 +15,11 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   CONTENTS, READONLY
   5 .debug_aranges 00000058  00000000  00000000  0000025c  2**0
                   CONTENTS, READONLY, DEBUGGING
-  6 .debug_info   00000852  00000000  00000000  000002b4  2**0
+  6 .debug_info   00000851  00000000  00000000  000002b4  2**0
                   CONTENTS, READONLY, DEBUGGING
-  7 .debug_abbrev 0000067b  00000000  00000000  00000b06  2**0
+  7 .debug_abbrev 0000067b  00000000  00000000  00000b05  2**0
                   CONTENTS, READONLY, DEBUGGING
-  8 .debug_line   000003b6  00000000  00000000  00001181  2**0
+  8 .debug_line   000003b6  00000000  00000000  00001180  2**0
                   CONTENTS, READONLY, DEBUGGING
   9 .debug_frame  000000dc  00000000  00000000  00001538  2**2
                   CONTENTS, READONLY, DEBUGGING
@@ -235,7 +235,7 @@ void I2C_setCallbacks(void (*recv)(uint8_t), void (*req)())
 void setup(){
 	I2C_setCallbacks(I2C_received,I2C_requested);
 	I2C_init(I2C_ADDR);
- 152:	80 e2       	ldi	r24, 0x20	; 32
+ 152:	84 e0       	ldi	r24, 0x04	; 4
  154:	0e 94 48 00 	call	0x90	; 0x90 <_Z8I2C_inith>
  158:	08 95       	ret
 

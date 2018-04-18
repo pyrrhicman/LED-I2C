@@ -235,7 +235,7 @@ void I2C_setCallbacks(void (*recv)(uint8_t), void (*req)())
 void setup(){
 	I2C_setCallbacks(I2C_received,I2C_requested);
 	I2C_init(I2C_ADDR);
- 152:	80 e1       	ldi	r24, 0x10	; 16
+ 152:	82 e0       	ldi	r24, 0x02	; 2
  154:	0e 94 48 00 	call	0x90	; 0x90 <_Z8I2C_inith>
  158:	08 95       	ret
 
