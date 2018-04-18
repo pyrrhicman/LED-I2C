@@ -6,7 +6,8 @@
 #define F_CPU 8000000UL
 #define _LCD_LIB_
 
-
+#include <stdio.h>
+#include <string.h>
 
 #include <avr/io.h>
 #include <util/delay.h>
@@ -33,19 +34,28 @@ int main(void)
 			LCD1.SetD6Pin (ADD(PORTD),ADD(DDRD),5);
 			LCD1.SetD7Pin (ADD(PORTD),ADD(DDRD),6);
 			LCD1.Init(16,2);
-
 	
+	char myname[]="PORT is : ";
+	uint8_t PINAA;
+	unsigned int PINAINT;
     /* Replace with your application code */
     while (1) 
     {
 		
-		LCD1.Clr();
-		LCD1.Printf("test",0,0);
+		//LCD1.Clr();
+		//LCD1.Printf("test",0,0);
 		while((PINB & 0x01) ==1){
-		//char key = 0x2f;
+		LCD1.Clr();
+		LCD1.SendString(myname);
+		PINAINT = (int)PINA;
+		LCD1.INTNumber(PINAINT);	
+		//PINAINT = printf ("Characters: %c %c \n", 'a', 65);
+		//memcpy ( PINA, myname, strlen(myname)+1 );
+		//LCD1.SendString(PINAA);
 		if ((PINB & 0b00000010) == 0b00000000)
 		{
 		i2c_start(SLAVE_1_ADRR <<1 | I2C_WRITE);
+
 		}
 		else if ((PINB & 0b00000010) == 0b00000010)
 		{
@@ -56,6 +66,9 @@ int main(void)
 		i2c_write(PINA);
 		i2c_stop();
 		_delay_ms(1000);
+		
+		
+		
 		/*
 		i2c_start(0x10<<1 | I2C_READ);
 		data_received = i2c_read_ack();
