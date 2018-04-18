@@ -6,6 +6,8 @@
 #define F_CPU 8000000UL
 #define _LCD_LIB_
 
+
+
 #include <avr/io.h>
 #include <util/delay.h>
 #include <D:\GitHub\LED-I2C\LED-I2C Lib\i2c_master.c>
@@ -14,7 +16,10 @@
 char data_received;
 
 Character_LCD LCD1;
-
+#define SLAVE_1_ADRR 0x10
+#define SLAVE_2_ADRR 0x20
+#define SLAVE_3_ADRR 0x30
+#define SLAVE_4_ADRR 0x40
 int main(void)
 {
 	i2c_init();
@@ -36,12 +41,22 @@ int main(void)
 		
 		LCD1.Clr();
 		LCD1.Printf("test",0,0);
-		while(PINB ==1){
-		char key = 0x2f;
-		i2c_start(0x10<<1 | I2C_WRITE);
+		while((PINB & 0x01) ==1){
+		//char key = 0x2f;
+		if ((PINB & 0b00000010) == 0b00000000)
+		{
+		i2c_start(SLAVE_1_ADRR <<1 | I2C_WRITE);
+		}
+		else if ((PINB & 0b00000010) == 0b00000010)
+		{
+		i2c_start(SLAVE_2_ADRR <<1 | I2C_WRITE);
+		}
+
+		//i2c_start(0x10);
 		i2c_write(PINA);
 		i2c_stop();
-		_delay_ms(10);
+		_delay_ms(1000);
+		/*
 		i2c_start(0x10<<1 | I2C_READ);
 		data_received = i2c_read_ack();
 		LCD1.Clr();
@@ -49,7 +64,8 @@ int main(void)
 		LCD1.SendChar(PINA);
 		i2c_read_nack();
 		i2c_stop();
-		_delay_ms(100);
+		_delay_ms(2000);
+		*/
 		}
     }
 }

@@ -1,5 +1,5 @@
 
-LED-I2C-Slave C++.elf:     file format elf32-avr
+LED-I2C-Slave 2 C++.elf:     file format elf32-avr
 
 Sections:
 Idx Name          Size      VMA       LMA       File off  Algn
@@ -15,19 +15,19 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   CONTENTS, READONLY
   5 .debug_aranges 00000058  00000000  00000000  0000025c  2**0
                   CONTENTS, READONLY, DEBUGGING
-  6 .debug_info   00000851  00000000  00000000  000002b4  2**0
+  6 .debug_info   00000852  00000000  00000000  000002b4  2**0
                   CONTENTS, READONLY, DEBUGGING
-  7 .debug_abbrev 0000067b  00000000  00000000  00000b05  2**0
+  7 .debug_abbrev 0000067b  00000000  00000000  00000b06  2**0
                   CONTENTS, READONLY, DEBUGGING
-  8 .debug_line   000003b6  00000000  00000000  00001180  2**0
+  8 .debug_line   000003b6  00000000  00000000  00001181  2**0
                   CONTENTS, READONLY, DEBUGGING
   9 .debug_frame  000000dc  00000000  00000000  00001538  2**2
                   CONTENTS, READONLY, DEBUGGING
- 10 .debug_str    00000490  00000000  00000000  00001614  2**0
+ 10 .debug_str    00000494  00000000  00000000  00001614  2**0
                   CONTENTS, READONLY, DEBUGGING
- 11 .debug_loc    00000177  00000000  00000000  00001aa4  2**0
+ 11 .debug_loc    00000177  00000000  00000000  00001aa8  2**0
                   CONTENTS, READONLY, DEBUGGING
- 12 .debug_ranges 00000048  00000000  00000000  00001c1b  2**0
+ 12 .debug_ranges 00000048  00000000  00000000  00001c1f  2**0
                   CONTENTS, READONLY, DEBUGGING
 
 Disassembly of section .text:
@@ -235,7 +235,7 @@ void I2C_setCallbacks(void (*recv)(uint8_t), void (*req)())
 void setup(){
 	I2C_setCallbacks(I2C_received,I2C_requested);
 	I2C_init(I2C_ADDR);
- 152:	80 e1       	ldi	r24, 0x10	; 16
+ 152:	80 e2       	ldi	r24, 0x20	; 32
  154:	0e 94 48 00 	call	0x90	; 0x90 <_Z8I2C_inith>
  158:	08 95       	ret
 
@@ -267,8 +267,8 @@ int main(void)
     /* Replace with your application code */
     while (1) 
     {
-	_delay_ms(2000);
-	PORTA = 0;
+		_delay_ms(2000);
+		PORTA = 0;
  174:	1b ba       	out	0x1b, r1	; 27
  176:	f5 cf       	rjmp	.-22     	; 0x162 <main+0x8>
 
