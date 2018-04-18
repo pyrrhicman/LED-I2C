@@ -15,7 +15,6 @@
 #include <D:\GitHub\LCD-Lib-Cplusplus\LIB\CharacterLCD.h>
 #include <D:\GitHub\LCD-Lib-Cplusplus\LIB\CharacterLCD.cpp>
 char data_received;
-
 Character_LCD LCD1;
 #define SLAVE_1_ADRR 0x10
 #define SLAVE_2_ADRR 0x20
@@ -34,10 +33,7 @@ int main(void)
 			LCD1.SetD6Pin (ADD(PORTD),ADD(DDRD),5);
 			LCD1.SetD7Pin (ADD(PORTD),ADD(DDRD),6);
 			LCD1.Init(16,2);
-	
-	char myname[]="PORT is : ";
-	uint8_t PINAA;
-	unsigned int PINAINT;
+
     /* Replace with your application code */
     while (1) 
     {
@@ -46,12 +42,13 @@ int main(void)
 		//LCD1.Printf("test",0,0);
 		while((PINB & 0x01) ==1){
 		LCD1.Clr();
-		LCD1.SendString(myname);
-		PINAINT = (int)PINA;
-		LCD1.INTNumber(PINAINT);	
-		//PINAINT = printf ("Characters: %c %c \n", 'a', 65);
-		//memcpy ( PINA, myname, strlen(myname)+1 );
-		//LCD1.SendString(PINAA);
+		
+		
+
+		LCD1.SendString("PORT is : ");
+		LCD1.INTNumber((int)PINA);	
+		
+		
 		if ((PINB & 0b00000010) == 0b00000000)
 		{
 		i2c_start(SLAVE_1_ADRR <<1 | I2C_WRITE);
