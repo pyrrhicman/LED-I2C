@@ -17,13 +17,13 @@ main.d main.o: .././main.cpp \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\util\delay.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\util\delay_basic.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\math.h \
- D:\GitHub\LED-I2C\LED-I2C\ Lib\i2c_master.c \
+ C:\Users\ICTP17-Askari\IdeaProjects\LED-I2C\LED-I2C\ Lib\i2c_master.c \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\util\twi.h \
- D:\GitHub\LED-I2C\LED-I2C\ Lib\i2c_master.h \
- D:\GitHub\LCD-Lib-Cplusplus\LIB\CharacterLCD.h \
+ C:\Users\ICTP17-Askari\IdeaProjects\LED-I2C\LED-I2C\ Lib\i2c_master.h \
+ C:\Users\ICTP17-Askari\IdeaProjects\LCD-Lib-Cplusplus\LIB\CharacterLCD.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\pgmspace.h \
- D:\GitHub\LCD-Lib-Cplusplus\LIB\CharacterLCD.cpp \
- D:\GitHub\LCD-Lib-Cplusplus\LIB\CharacterLCD.h
+ C:\Users\ICTP17-Askari\IdeaProjects\LCD-Lib-Cplusplus\LIB\CharacterLCD.cpp \
+ C:\Users\ICTP17-Askari\IdeaProjects\LCD-Lib-Cplusplus\LIB\CharacterLCD.h
 
 c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\stdio.h:
 
@@ -61,16 +61,16 @@ c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\
 
 c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\math.h:
 
-D:\GitHub\LED-I2C\LED-I2C\ Lib\i2c_master.c:
+C:\Users\ICTP17-Askari\IdeaProjects\LED-I2C\LED-I2C\ Lib\i2c_master.c:
 
 c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\util\twi.h:
 
-D:\GitHub\LED-I2C\LED-I2C\ Lib\i2c_master.h:
+C:\Users\ICTP17-Askari\IdeaProjects\LED-I2C\LED-I2C\ Lib\i2c_master.h:
 
-D:\GitHub\LCD-Lib-Cplusplus\LIB\CharacterLCD.h:
+C:\Users\ICTP17-Askari\IdeaProjects\LCD-Lib-Cplusplus\LIB\CharacterLCD.h:
 
 c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\pgmspace.h:
 
-D:\GitHub\LCD-Lib-Cplusplus\LIB\CharacterLCD.cpp:
+C:\Users\ICTP17-Askari\IdeaProjects\LCD-Lib-Cplusplus\LIB\CharacterLCD.cpp:
 
-D:\GitHub\LCD-Lib-Cplusplus\LIB\CharacterLCD.h:
+C:\Users\ICTP17-Askari\IdeaProjects\LCD-Lib-Cplusplus\LIB\CharacterLCD.h:

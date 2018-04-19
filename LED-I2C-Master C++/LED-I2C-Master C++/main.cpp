@@ -1,6 +1,6 @@
 /*
  * Created: 4/16/2018 4:48:39 PM
- * Author : Mohammad
+ * Author : Mohammad Askari
  */ 
 
 #define F_CPU 8000000UL
@@ -11,9 +11,9 @@
 
 #include <avr/io.h>
 #include <util/delay.h>
-#include <D:\GitHub\LED-I2C\LED-I2C Lib\i2c_master.c>
-#include <D:\GitHub\LCD-Lib-Cplusplus\LIB\CharacterLCD.h>
-#include <D:\GitHub\LCD-Lib-Cplusplus\LIB\CharacterLCD.cpp>
+#include <C:\Users\ICTP17-Askari\IdeaProjects\LED-I2C\LED-I2C Lib\i2c_master.c>
+#include <C:\Users\ICTP17-Askari\IdeaProjects\LCD-Lib-Cplusplus\LIB\CharacterLCD.h>
+#include <C:\Users\ICTP17-Askari\IdeaProjects\LCD-Lib-Cplusplus\LIB\CharacterLCD.cpp>
 char data_received;
 Character_LCD LCD1;
 #define SLAVE_1_ADRR 0b00000010
