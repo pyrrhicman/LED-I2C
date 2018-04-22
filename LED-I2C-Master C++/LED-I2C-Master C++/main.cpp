@@ -22,17 +22,27 @@ Character_LCD LCD1;
 #define SLAVE_4_ADRR 0b00010000
 int main(void)
 {
+	LCD1.SetRSPin (ADD(PORTD),ADD(DDRD),0);
+	LCD1.SetRWPin (ADD(PORTD),ADD(DDRD),1);
+	LCD1.SetEPin  (ADD(PORTD),ADD(DDRD),2);
+	LCD1.SetD4Pin (ADD(PORTD),ADD(DDRD),3);
+	LCD1.SetD5Pin (ADD(PORTD),ADD(DDRD),4);
+	LCD1.SetD6Pin (ADD(PORTD),ADD(DDRD),5);
+	LCD1.SetD7Pin (ADD(PORTD),ADD(DDRD),6);
+	LCD1.Init(16,2);
+	
 	i2c_init();
+	LCD1.SendString("TWBR :");
+	LCD1.INTNumber((int)TWBR);
+	LCD1.GotoXY(1,1);
+	LCD1.SendString(" TWPS :");
+	
+	LCD1.INTNumber((int)TWSR & 0x03);
+	_delay_ms(1000);
+	
 	DDRA = 0;
 	DDRB = 0;
-			LCD1.SetRSPin (ADD(PORTD),ADD(DDRD),0);
-			LCD1.SetRWPin (ADD(PORTD),ADD(DDRD),1);
-			LCD1.SetEPin  (ADD(PORTD),ADD(DDRD),2);
-			LCD1.SetD4Pin (ADD(PORTD),ADD(DDRD),3);
-			LCD1.SetD5Pin (ADD(PORTD),ADD(DDRD),4);
-			LCD1.SetD6Pin (ADD(PORTD),ADD(DDRD),5);
-			LCD1.SetD7Pin (ADD(PORTD),ADD(DDRD),6);
-			LCD1.Init(16,2);
+			
 	unsigned char ADDRESS;
     /* Replace with your application code */
     while (1) 

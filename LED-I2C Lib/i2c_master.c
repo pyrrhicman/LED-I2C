@@ -1,19 +1,29 @@
 #ifndef  F_CPU
-#define F_CPU 16000000UL
+#define F_CPU 8000000UL
 #endif
 
 #include <avr/io.h>
 #include <util/twi.h>
-
+#include <math.h>
 #include "i2c_master.h"
-
 #define F_SCL 100000UL // SCL frequency
-#define Prescaler 1
-#define TWBR_val ((((F_CPU / F_SCL) / Prescaler) - 16 ) / 2)
+#define TWBR_val ((F_CPU - (16*F_SCL)) / (2 * (F_SCL * Prescaler)))
+
 
 void i2c_init(void)
 {
-	TWBR = (uint8_t)TWBR_val;
+	TWSR = (0<<TWPS1 | 0<<TWPS0);
+	
+	
+	uint8_t TWPSDATA = (TWSR & 0x03);
+	int nummber = 1;
+	for(int po=1; po <= (int)TWPSDATA ; po++)
+	{
+	nummber = nummber*4;
+	}
+	
+	uint8_t Prescaler = (uint8_t)nummber;
+	TWBR = (uint8_t)TWBR_val; //Make sure TWBR should be equal or more than 10
 }
 
 uint8_t i2c_start(uint8_t address)
