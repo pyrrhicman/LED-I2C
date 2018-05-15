@@ -21,10 +21,9 @@ main.d main.o: .././main.cpp \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\util\twi.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\interrupt.h \
  D:\GitHub\LED-I2C\LED-I2C\ Lib\I2C.h \
- D:\GitHub\LCD-Lib-Cplusplus\LIB\CharacterLCD.h \
- c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\pgmspace.h \
- D:\GitHub\LCD-Lib-Cplusplus\LIB\CharacterLCD.cpp \
- D:\GitHub\LCD-Lib-Cplusplus\LIB\CharacterLCD.h
+ D:\GitHub\MYLCDLIB\mlcd_CPU\mlcd_CPU\lib\mlcd.cpp \
+ D:\GitHub\MYLCDLIB\mlcd_CPU\mlcd_CPU\lib\mlcd.h \
+ D:\GitHub\MYLCDLIB\mlcd_CPU\mlcd_CPU\lib\mlcd.h
 
 c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\stdio.h:
 
@@ -70,10 +69,8 @@ c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\
 
 D:\GitHub\LED-I2C\LED-I2C\ Lib\I2C.h:
 
-D:\GitHub\LCD-Lib-Cplusplus\LIB\CharacterLCD.h:
+D:\GitHub\MYLCDLIB\mlcd_CPU\mlcd_CPU\lib\mlcd.cpp:
 
-c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\pgmspace.h:
+D:\GitHub\MYLCDLIB\mlcd_CPU\mlcd_CPU\lib\mlcd.h:
 
-D:\GitHub\LCD-Lib-Cplusplus\LIB\CharacterLCD.cpp:
-
-D:\GitHub\LCD-Lib-Cplusplus\LIB\CharacterLCD.h:
+D:\GitHub\MYLCDLIB\mlcd_CPU\mlcd_CPU\lib\mlcd.h:

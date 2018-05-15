@@ -16,7 +16,10 @@ main.d main.o: .././main.cpp \
  D:\GitHub\LED-I2C\LED-I2C\ Lib\I2C.c \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\util\twi.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\interrupt.h \
- D:\GitHub\LED-I2C\LED-I2C\ Lib\I2C.h
+ D:\GitHub\LED-I2C\LED-I2C\ Lib\I2C.h \
+ D:\GitHub\MYLCDLIB\mlcd_CPU\mlcd_CPU\lib\mlcd.cpp \
+ D:\GitHub\MYLCDLIB\mlcd_CPU\mlcd_CPU\lib\mlcd.h \
+ D:\GitHub\MYLCDLIB\mlcd_CPU\mlcd_CPU\lib\mlcd.h
 
 c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\io.h:
 
@@ -53,3 +56,9 @@ c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\
 c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\interrupt.h:
 
 D:\GitHub\LED-I2C\LED-I2C\ Lib\I2C.h:
+
+D:\GitHub\MYLCDLIB\mlcd_CPU\mlcd_CPU\lib\mlcd.cpp:
+
+D:\GitHub\MYLCDLIB\mlcd_CPU\mlcd_CPU\lib\mlcd.h:
+
+D:\GitHub\MYLCDLIB\mlcd_CPU\mlcd_CPU\lib\mlcd.h:

@@ -4,7 +4,7 @@
  */ 
 
 #define F_CPU 8000000UL
-#define _LCD_LIB_
+#define _CH_LCD_
 
 #define SLAVE_1_ADRR 0b00000010
 #define SLAVE_2_ADRR 0b00000100
@@ -17,10 +17,11 @@
 #include <avr/io.h>
 #include <util/delay.h>
 #include <D:\GitHub\LED-I2C\LED-I2C Lib\I2C.c>
-#include <D:\GitHub\LCD-Lib-Cplusplus\LIB\CharacterLCD.h>
-#include <D:\GitHub\LCD-Lib-Cplusplus\LIB\CharacterLCD.cpp>
+//#include <D:\GitHub\LCD-Lib-Cplusplus\LIB\CharacterLCD.h>
+#include <D:\GitHub\MYLCDLIB\mlcd_CPU\mlcd_CPU\lib\mlcd.cpp>
+#include <D:\GitHub\MYLCDLIB\mlcd_CPU\mlcd_CPU\lib\mlcd.h>
 char data_received;
-Character_LCD LCD1;
+CH_LCD LCD1;
 
 int main(void)
 {
@@ -35,11 +36,11 @@ int main(void)
 	
 	I2C_M_init();
 	LCD1.SendString("TWBR :");
-	LCD1.INTNumber((int)TWBR);
-	LCD1.GotoXY(1,1);
+	LCD1.SendInteger((int)TWBR);
+	LCD1.Goto(1,1);
 	LCD1.SendString(" TWPS :");
 	
-	LCD1.INTNumber((int)TWSR & 0x03);
+	LCD1.SendInteger((int)TWSR & 0x03);
 	_delay_ms(1000);
 	
 	DDRA = 0;
@@ -47,37 +48,34 @@ int main(void)
 			
 	unsigned char ADDRESS;
     /* Replace with your application code */
+	uint8_t receivedDATA[1];
+	uint8_t SendDATA[1];
     while (1) 
     {
-		
-		//LCD1.Clr();
-		//LCD1.Printf("test",0,0);
 		while((PINB & 0x01) ==1){
-		LCD1.Clr();
+		//LCD1.Clr();
 		
 		
 		ADDRESS = PINB & 0b11111110;
-		LCD1.SendString("PORT is : ");
-		LCD1.INTNumber((int)PINA);	
-		LCD1.SendString("ADDRESS : ",1,1);
-		LCD1.INTNumber((int)ADDRESS);
-		I2C_M_start(ADDRESS <<1 | I2C_WRITE);
-		I2C_M_write(PINA);
-		I2C_M_stop();
-		_delay_ms(1000);
+		SendDATA[0]= PINA;
+		I2C_M_transmit(ADDRESS,SendDATA,1);	
+		LCD1.Goto(0,0);
+		LCD1.SendString("SEND: ");
+		LCD1.SendInteger((int)SendDATA[0]);
+		LCD1.SendString(" to ");	
+		LCD1.SendInteger((int)ADDRESS);
+		LCD1.SendString("          ");
+		_delay_ms(10);
+	
+		I2C_M_receive(ADDRESS,receivedDATA,1);
+		LCD1.Goto(0,1);
+		LCD1.SendString("READ: ");
+		LCD1.SendInteger((int)receivedDATA[0]);	
+		LCD1.SendString(" From ");
+		LCD1.SendInteger((int)ADDRESS);
+		LCD1.SendString("          ");
+		_delay_ms(10);
 		
-		
-		
-		/*
-		i2c_start(0x10<<1 | I2C_READ);
-		data_received = i2c_read_ack();
-		LCD1.Clr();
-		LCD1.SendChar(data_received);
-		LCD1.SendChar(PINA);
-		i2c_read_nack();
-		i2c_stop();
-		_delay_ms(2000);
-		*/
 		}
     }
 }
