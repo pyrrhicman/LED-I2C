@@ -13,21 +13,21 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   CONTENTS, READONLY
   4 .note.gnu.avr.deviceinfo 0000003c  00000000  00000000  00000220  2**2
                   CONTENTS, READONLY
-  5 .debug_aranges 00000058  00000000  00000000  0000025c  2**0
+  5 .debug_aranges 000000a8  00000000  00000000  0000025c  2**0
                   CONTENTS, READONLY, DEBUGGING
-  6 .debug_info   00000851  00000000  00000000  000002b4  2**0
+  6 .debug_info   00000c4e  00000000  00000000  00000304  2**0
                   CONTENTS, READONLY, DEBUGGING
-  7 .debug_abbrev 0000067b  00000000  00000000  00000b05  2**0
+  7 .debug_abbrev 00000743  00000000  00000000  00000f52  2**0
                   CONTENTS, READONLY, DEBUGGING
-  8 .debug_line   000003b6  00000000  00000000  00001180  2**0
+  8 .debug_line   00000644  00000000  00000000  00001695  2**0
                   CONTENTS, READONLY, DEBUGGING
-  9 .debug_frame  000000dc  00000000  00000000  00001538  2**2
+  9 .debug_frame  00000224  00000000  00000000  00001cdc  2**2
                   CONTENTS, READONLY, DEBUGGING
- 10 .debug_str    00000490  00000000  00000000  00001614  2**0
+ 10 .debug_str    0000063c  00000000  00000000  00001f00  2**0
                   CONTENTS, READONLY, DEBUGGING
- 11 .debug_loc    00000177  00000000  00000000  00001aa4  2**0
+ 11 .debug_loc    000008c4  00000000  00000000  0000253c  2**0
                   CONTENTS, READONLY, DEBUGGING
- 12 .debug_ranges 00000048  00000000  00000000  00001c1b  2**0
+ 12 .debug_ranges 000000c8  00000000  00000000  00002e00  2**0
                   CONTENTS, READONLY, DEBUGGING
 
 Disassembly of section .text:
@@ -82,24 +82,24 @@ Disassembly of section .text:
 00000078 <__bad_interrupt>:
   78:	0c 94 00 00 	jmp	0	; 0x0 <__vectors>
 
-0000007c <_Z12I2C_receivedh>:
-{
-  // clear acknowledge and enable bits
-  cli();
-  TWCR = 0;
-  TWAR = 0;
-  sei();
+0000007c <_Z14I2C_S_receivedh>:
+	// clear acknowledge and enable bits
+	//Frequently, interrupts are being disabled for periods of time in order to perform certain operations without being disturbed
+	cli(); //cli clears the global interrupt flag in SREG so prevent any form of interrupt occurring.
+	TWCR = 0;
+	TWAR = 0;
+	sei(); //While sei sets the bit and switches interrupts on.
   7c:	80 93 60 00 	sts	0x0060, r24	; 0x800060 <_edata>
   80:	80 91 60 00 	lds	r24, 0x0060	; 0x800060 <_edata>
   84:	8b bb       	out	0x1b, r24	; 27
   86:	08 95       	ret
 
-00000088 <_Z13I2C_requestedv>:
+00000088 <_Z15I2C_S_requestedv>:
   88:	80 91 60 00 	lds	r24, 0x0060	; 0x800060 <_edata>
   8c:	83 b9       	out	0x03, r24	; 3
   8e:	08 95       	ret
 
-00000090 <_Z8I2C_inith>:
+00000090 <_Z10I2C_S_inith>:
   90:	f8 94       	cli
   92:	88 0f       	add	r24, r24
   94:	82 b9       	out	0x02, r24	; 2
@@ -130,7 +130,7 @@ ISR(TWI_vect)
   ba:	bf 93       	push	r27
   bc:	ef 93       	push	r30
   be:	ff 93       	push	r31
-  switch(TW_STATUS)
+	switch(TW_STATUS)
   c0:	81 b1       	in	r24, 0x01	; 1
   c2:	88 7f       	andi	r24, 0xF8	; 248
   c4:	80 38       	cpi	r24, 0x80	; 128
@@ -144,57 +144,57 @@ ISR(TWI_vect)
   d4:	88 3b       	cpi	r24, 0xB8	; 184
   d6:	91 f0       	breq	.+36     	; 0xfc <__vector_19+0x5e>
   d8:	1d c0       	rjmp	.+58     	; 0x114 <__vector_19+0x76>
-  {
-    case TW_SR_DATA_ACK:
-      // received data from master, call the receive callback
-      I2C_recv(TWDR); 
+	{
+		case TW_SR_DATA_ACK:
+		// received data from master, call the receive callback
+		I2C_S_recv(TWDR);
   da:	83 b1       	in	r24, 0x03	; 3
-  dc:	e0 91 63 00 	lds	r30, 0x0063	; 0x800063 <_ZL8I2C_recv>
-  e0:	f0 91 64 00 	lds	r31, 0x0064	; 0x800064 <_ZL8I2C_recv+0x1>
+  dc:	e0 91 63 00 	lds	r30, 0x0063	; 0x800063 <_ZL10I2C_S_recv>
+  e0:	f0 91 64 00 	lds	r31, 0x0064	; 0x800064 <_ZL10I2C_S_recv+0x1>
   e4:	09 95       	icall
-      TWCR = (1<<TWIE) | (1<<TWINT) | (1<<TWEA) | (1<<TWEN);
+		TWCR = (1<<TWIE) | (1<<TWINT) | (1<<TWEA) | (1<<TWEN);
   e6:	85 ec       	ldi	r24, 0xC5	; 197
   e8:	86 bf       	out	0x36, r24	; 54
-      break;
+		break;
   ea:	16 c0       	rjmp	.+44     	; 0x118 <__vector_19+0x7a>
-    case TW_ST_SLA_ACK:
-      // master is requesting data, call the request callback
-      I2C_req();
-  ec:	e0 91 61 00 	lds	r30, 0x0061	; 0x800061 <_ZL7I2C_req>
-  f0:	f0 91 62 00 	lds	r31, 0x0062	; 0x800062 <_ZL7I2C_req+0x1>
+		case TW_ST_SLA_ACK:
+		// master is requesting data, call the request callback
+		I2C_S_req();
+  ec:	e0 91 61 00 	lds	r30, 0x0061	; 0x800061 <_ZL9I2C_S_req>
+  f0:	f0 91 62 00 	lds	r31, 0x0062	; 0x800062 <_ZL9I2C_S_req+0x1>
   f4:	09 95       	icall
-      TWCR = (1<<TWIE) | (1<<TWINT) | (1<<TWEA) | (1<<TWEN);
+		TWCR = (1<<TWIE) | (1<<TWINT) | (1<<TWEA) | (1<<TWEN);
   f6:	85 ec       	ldi	r24, 0xC5	; 197
   f8:	86 bf       	out	0x36, r24	; 54
-      break;
+		break;
   fa:	0e c0       	rjmp	.+28     	; 0x118 <__vector_19+0x7a>
-    case TW_ST_DATA_ACK:
-      // master is requesting data, call the request callback
-      I2C_req();
-  fc:	e0 91 61 00 	lds	r30, 0x0061	; 0x800061 <_ZL7I2C_req>
- 100:	f0 91 62 00 	lds	r31, 0x0062	; 0x800062 <_ZL7I2C_req+0x1>
+		case TW_ST_DATA_ACK:
+		// master is requesting data, call the request callback
+		I2C_S_req();
+  fc:	e0 91 61 00 	lds	r30, 0x0061	; 0x800061 <_ZL9I2C_S_req>
+ 100:	f0 91 62 00 	lds	r31, 0x0062	; 0x800062 <_ZL9I2C_S_req+0x1>
  104:	09 95       	icall
-      TWCR = (1<<TWIE) | (1<<TWINT) | (1<<TWEA) | (1<<TWEN);
+		TWCR = (1<<TWIE) | (1<<TWINT) | (1<<TWEA) | (1<<TWEN);
  106:	85 ec       	ldi	r24, 0xC5	; 197
  108:	86 bf       	out	0x36, r24	; 54
-      break;
+		break;
  10a:	06 c0       	rjmp	.+12     	; 0x118 <__vector_19+0x7a>
-    case TW_BUS_ERROR:
-      // some sort of erroneous state, prepare TWI to be readdressed
-      TWCR = 0;
+		case TW_BUS_ERROR:
+		// some sort of erroneous state, prepare TWI to be readdressed
+		TWCR = 0;
  10c:	16 be       	out	0x36, r1	; 54
-      TWCR = (1<<TWIE) | (1<<TWINT) | (1<<TWEA) | (1<<TWEN); 
+		TWCR = (1<<TWIE) | (1<<TWINT) | (1<<TWEA) | (1<<TWEN);
  10e:	85 ec       	ldi	r24, 0xC5	; 197
  110:	86 bf       	out	0x36, r24	; 54
-      break;
+		break;
  112:	02 c0       	rjmp	.+4      	; 0x118 <__vector_19+0x7a>
-    default:
-      TWCR = (1<<TWIE) | (1<<TWINT) | (1<<TWEA) | (1<<TWEN);
+		default:
+		TWCR = (1<<TWIE) | (1<<TWINT) | (1<<TWEA) | (1<<TWEN);
  114:	85 ec       	ldi	r24, 0xC5	; 197
  116:	86 bf       	out	0x36, r24	; 54
-      break;
-  }
-} 
+		break;
+	}
+}
  118:	ff 91       	pop	r31
  11a:	ef 91       	pop	r30
  11c:	bf 91       	pop	r27
@@ -214,29 +214,29 @@ ISR(TWI_vect)
  138:	18 95       	reti
 
 0000013a <_Z5setupv>:
-static void (*I2C_recv)(uint8_t);		//isr routines for i2c
-static void (*I2C_req)();
 
-void I2C_setCallbacks(void (*recv)(uint8_t), void (*req)())
+
+
+void I2C_S_setCallbacks(void (*recv)(uint8_t), void (*req)())
 {
-  I2C_recv = recv;
+	I2C_S_recv = recv;
  13a:	8e e3       	ldi	r24, 0x3E	; 62
  13c:	90 e0       	ldi	r25, 0x00	; 0
- 13e:	90 93 64 00 	sts	0x0064, r25	; 0x800064 <_ZL8I2C_recv+0x1>
- 142:	80 93 63 00 	sts	0x0063, r24	; 0x800063 <_ZL8I2C_recv>
-  I2C_req = req;
+ 13e:	90 93 64 00 	sts	0x0064, r25	; 0x800064 <_ZL10I2C_S_recv+0x1>
+ 142:	80 93 63 00 	sts	0x0063, r24	; 0x800063 <_ZL10I2C_S_recv>
+	I2C_S_req = req;
  146:	84 e4       	ldi	r24, 0x44	; 68
  148:	90 e0       	ldi	r25, 0x00	; 0
- 14a:	90 93 62 00 	sts	0x0062, r25	; 0x800062 <_ZL7I2C_req+0x1>
- 14e:	80 93 61 00 	sts	0x0061, r24	; 0x800061 <_ZL7I2C_req>
-	I2C_transmitByte(data);
+ 14a:	90 93 62 00 	sts	0x0062, r25	; 0x800062 <_ZL9I2C_S_req+0x1>
+ 14e:	80 93 61 00 	sts	0x0061, r24	; 0x800061 <_ZL9I2C_S_req>
+	I2C_S_transmitByte(data);
 }
 
 void setup(){
-	I2C_setCallbacks(I2C_received,I2C_requested);
-	I2C_init(I2C_ADDR);
+	I2C_S_setCallbacks(I2C_S_received,I2C_S_requested);
+	I2C_S_init(I2C_ADDR);
  152:	82 e0       	ldi	r24, 0x02	; 2
- 154:	0e 94 48 00 	call	0x90	; 0x90 <_Z8I2C_inith>
+ 154:	0e 94 48 00 	call	0x90	; 0x90 <_Z10I2C_S_inith>
  158:	08 95       	ret
 
 0000015a <main>:

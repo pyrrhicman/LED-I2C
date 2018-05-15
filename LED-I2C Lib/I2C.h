@@ -19,4 +19,15 @@ uint8_t I2C_M_writeReg(uint8_t devaddr, uint8_t regaddr, uint8_t* data, uint16_t
 uint8_t I2C_M_readReg(uint8_t devaddr, uint8_t regaddr, uint8_t* data, uint16_t length);
 void I2C_M_stop(void);
 
+
+void I2C_S_init(uint8_t address);
+void I2C_S_stop(void);
+void I2C_S_setCallbacks(void (*recv)(uint8_t), void (*req)());
+
+inline void __attribute__((always_inline)) I2C_S_transmitByte(uint8_t data)
+{
+	TWDR = data;
+}
+
+ISR(TWI_vect);
 #endif // I2C_MASTER_H
