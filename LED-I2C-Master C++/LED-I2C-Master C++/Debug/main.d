@@ -17,9 +17,10 @@ main.d main.o: .././main.cpp \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\util\delay.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\util\delay_basic.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\math.h \
- D:\GitHub\LED-I2C\LED-I2C\ Lib\i2c_master.c \
+ D:\GitHub\LED-I2C\LED-I2C\ Lib\I2C.c \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\util\twi.h \
- D:\GitHub\LED-I2C\LED-I2C\ Lib\i2c_master.h \
+ c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\interrupt.h \
+ D:\GitHub\LED-I2C\LED-I2C\ Lib\I2C.h \
  D:\GitHub\LCD-Lib-Cplusplus\LIB\CharacterLCD.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\pgmspace.h \
  D:\GitHub\LCD-Lib-Cplusplus\LIB\CharacterLCD.cpp \
@@ -61,11 +62,13 @@ c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\
 
 c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\math.h:
 
-D:\GitHub\LED-I2C\LED-I2C\ Lib\i2c_master.c:
+D:\GitHub\LED-I2C\LED-I2C\ Lib\I2C.c:
 
 c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\util\twi.h:
 
-D:\GitHub\LED-I2C\LED-I2C\ Lib\i2c_master.h:
+c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\interrupt.h:
+
+D:\GitHub\LED-I2C\LED-I2C\ Lib\I2C.h:
 
 D:\GitHub\LCD-Lib-Cplusplus\LIB\CharacterLCD.h:
 

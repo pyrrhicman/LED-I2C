@@ -50,19 +50,19 @@ Discarded input sections
  .text          0x00000000        0x0 main.o
  .data          0x00000000        0x0 main.o
  .bss           0x00000000        0x0 main.o
- .text._Z12i2c_read_ackv
+ .text._Z14I2C_M_read_ackv
                 0x00000000        0xe main.o
- .text._Z13i2c_read_nackv
+ .text._Z15I2C_M_read_nackv
                 0x00000000        0xe main.o
- .text._Z12i2c_transmithPhj
+ .text._Z14I2C_M_transmithPhj
                 0x00000000       0x5a main.o
- .text._Z11i2c_receivehPhj
+ .text._Z13I2C_M_receivehPhj
                 0x00000000       0x6a main.o
- .text._Z12i2c_writeReghhPhj
+ .text._Z14I2C_M_writeReghhPhj
                 0x00000000       0x62 main.o
- .text._Z11i2c_readReghhPhj
+ .text._Z13I2C_M_readReghhPhj
                 0x00000000       0x84 main.o
- .text._Z8i2c_stopv
+ .text._Z10I2C_M_stopv
                 0x00000000        0x6 main.o
  .text._ZN13Character_LCD12SendString_VEPhh
                 0x00000000       0x50 main.o
@@ -487,15 +487,15 @@ END GROUP
                 0x000000a6                __vector_20
                 0x000000aa                . = ALIGN (0x2)
  *(.text.*)
- .text._Z8i2c_initv
+ .text._Z10I2C_M_initv
                 0x000000aa       0x4e main.o
-                0x000000aa                _Z8i2c_initv
- .text._Z9i2c_starth
+                0x000000aa                _Z10I2C_M_initv
+ .text._Z11I2C_M_starth
                 0x000000f8       0x3a main.o
-                0x000000f8                _Z9i2c_starth
- .text._Z9i2c_writeh
+                0x000000f8                _Z11I2C_M_starth
+ .text._Z11I2C_M_writeh
                 0x00000132       0x1a main.o
-                0x00000132                _Z9i2c_writeh
+                0x00000132                _Z11I2C_M_writeh
  .text._ZN13Character_LCDC2Ev
                 0x0000014c       0x3e main.o
                 0x0000014c                _ZN13Character_LCDC1Ev
@@ -529,7 +529,7 @@ END GROUP
                 0x00000e1c                _ZN13Character_LCD9INTNumberEf
  .text.main     0x00000e42      0x136 main.o
                 0x00000e42                main
- .text._GLOBAL__sub_I__Z8i2c_initv
+ .text._GLOBAL__sub_I__Z10I2C_M_initv
                 0x00000f78        0xa main.o
  .text.avr-libc.fplib
                 0x00000f82       0x5e c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr5\libm.a(fixunssfsi.o)
@@ -697,20 +697,20 @@ END GROUP
  .debug_abbrev  0x00000000      0x4a3 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.2.150/gcc/dev/atmega32/avr5/crtatmega32.o
  .debug_abbrev  0x000004a3      0x4a5 main.o
 
-.debug_line     0x00000000     0x106d
+.debug_line     0x00000000     0x1066
  *(.debug_line .debug_line.* .debug_line_end)
  .debug_line    0x00000000      0x115 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.2.150/gcc/dev/atmega32/avr5/crtatmega32.o
- .debug_line    0x00000115      0xf58 main.o
+ .debug_line    0x00000115      0xf51 main.o
 
 .debug_frame    0x00000000      0x4f0
  *(.debug_frame)
  .debug_frame   0x00000000      0x4f0 main.o
 
-.debug_str      0x00000000      0xd1d
+.debug_str      0x00000000      0xd49
  *(.debug_str)
  .debug_str     0x00000000      0x196 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.2.150/gcc/dev/atmega32/avr5/crtatmega32.o
- .debug_str     0x00000196      0xb87 main.o
-                                0xbdc (size before relaxing)
+ .debug_str     0x00000196      0xbb3 main.o
+                                0xc0b (size before relaxing)
 
 .debug_loc      0x00000000     0x28c3
  *(.debug_loc)

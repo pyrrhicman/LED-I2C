@@ -19,15 +19,15 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   CONTENTS, READONLY, DEBUGGING
   7 .debug_abbrev 00000948  00000000  00000000  00003f68  2**0
                   CONTENTS, READONLY, DEBUGGING
-  8 .debug_line   0000106d  00000000  00000000  000048b0  2**0
+  8 .debug_line   00001066  00000000  00000000  000048b0  2**0
                   CONTENTS, READONLY, DEBUGGING
-  9 .debug_frame  000004f0  00000000  00000000  00005920  2**2
+  9 .debug_frame  000004f0  00000000  00000000  00005918  2**2
                   CONTENTS, READONLY, DEBUGGING
- 10 .debug_str    00000d1d  00000000  00000000  00005e10  2**0
+ 10 .debug_str    00000d49  00000000  00000000  00005e08  2**0
                   CONTENTS, READONLY, DEBUGGING
- 11 .debug_loc    000028c3  00000000  00000000  00006b2d  2**0
+ 11 .debug_loc    000028c3  00000000  00000000  00006b51  2**0
                   CONTENTS, READONLY, DEBUGGING
- 12 .debug_ranges 00000190  00000000  00000000  000093f0  2**0
+ 12 .debug_ranges 00000190  00000000  00000000  00009414  2**0
                   CONTENTS, READONLY, DEBUGGING
 
 Disassembly of section .text:
@@ -110,7 +110,7 @@ Disassembly of section .text:
 000000a6 <__bad_interrupt>:
       a6:	0c 94 00 00 	jmp	0	; 0x0 <__vectors>
 
-000000aa <_Z8i2c_initv>:
+000000aa <_Z10I2C_M_initv>:
 			SendChar(ch);
 		}
 	}
@@ -123,7 +123,7 @@ Disassembly of section .text:
       b0:	30 e0       	ldi	r19, 0x00	; 0
       b2:	12 16       	cp	r1, r18
       b4:	13 06       	cpc	r1, r19
-      b6:	6c f4       	brge	.+26     	; 0xd2 <_Z8i2c_initv+0x28>
+      b6:	6c f4       	brge	.+26     	; 0xd2 <_Z10I2C_M_initv+0x28>
       b8:	81 e0       	ldi	r24, 0x01	; 1
       ba:	90 e0       	ldi	r25, 0x00	; 0
       bc:	a1 e0       	ldi	r26, 0x01	; 1
@@ -135,8 +135,8 @@ Disassembly of section .text:
       c8:	01 96       	adiw	r24, 0x01	; 1
       ca:	28 17       	cp	r18, r24
       cc:	39 07       	cpc	r19, r25
-      ce:	c4 f7       	brge	.-16     	; 0xc0 <_Z8i2c_initv+0x16>
-      d0:	02 c0       	rjmp	.+4      	; 0xd6 <_Z8i2c_initv+0x2c>
+      ce:	c4 f7       	brge	.-16     	; 0xc0 <_Z10I2C_M_initv+0x16>
+      d0:	02 c0       	rjmp	.+4      	; 0xd6 <_Z10I2C_M_initv+0x2c>
       d2:	a1 e0       	ldi	r26, 0x01	; 1
       d4:	b0 e0       	ldi	r27, 0x00	; 0
       d6:	b0 e0       	ldi	r27, 0x00	; 0
@@ -155,30 +155,30 @@ Disassembly of section .text:
       f4:	20 b9       	out	0x00, r18	; 0
       f6:	08 95       	ret
 
-000000f8 <_Z9i2c_starth>:
+000000f8 <_Z11I2C_M_starth>:
       f8:	16 be       	out	0x36, r1	; 54
       fa:	94 ea       	ldi	r25, 0xA4	; 164
       fc:	96 bf       	out	0x36, r25	; 54
       fe:	06 b6       	in	r0, 0x36	; 54
      100:	07 fe       	sbrs	r0, 7
-     102:	fd cf       	rjmp	.-6      	; 0xfe <_Z9i2c_starth+0x6>
+     102:	fd cf       	rjmp	.-6      	; 0xfe <_Z11I2C_M_starth+0x6>
      104:	91 b1       	in	r25, 0x01	; 1
      106:	98 7f       	andi	r25, 0xF8	; 248
      108:	98 30       	cpi	r25, 0x08	; 8
-     10a:	79 f4       	brne	.+30     	; 0x12a <_Z9i2c_starth+0x32>
+     10a:	79 f4       	brne	.+30     	; 0x12a <_Z11I2C_M_starth+0x32>
      10c:	83 b9       	out	0x03, r24	; 3
      10e:	84 e8       	ldi	r24, 0x84	; 132
      110:	86 bf       	out	0x36, r24	; 54
      112:	06 b6       	in	r0, 0x36	; 54
      114:	07 fe       	sbrs	r0, 7
-     116:	fd cf       	rjmp	.-6      	; 0x112 <_Z9i2c_starth+0x1a>
+     116:	fd cf       	rjmp	.-6      	; 0x112 <_Z11I2C_M_starth+0x1a>
      118:	91 b1       	in	r25, 0x01	; 1
      11a:	98 7f       	andi	r25, 0xF8	; 248
      11c:	98 31       	cpi	r25, 0x18	; 24
-     11e:	39 f0       	breq	.+14     	; 0x12e <_Z9i2c_starth+0x36>
+     11e:	39 f0       	breq	.+14     	; 0x12e <_Z11I2C_M_starth+0x36>
      120:	81 e0       	ldi	r24, 0x01	; 1
      122:	90 34       	cpi	r25, 0x40	; 64
-     124:	29 f4       	brne	.+10     	; 0x130 <_Z9i2c_starth+0x38>
+     124:	29 f4       	brne	.+10     	; 0x130 <_Z11I2C_M_starth+0x38>
      126:	80 e0       	ldi	r24, 0x00	; 0
      128:	08 95       	ret
      12a:	81 e0       	ldi	r24, 0x01	; 1
@@ -186,18 +186,18 @@ Disassembly of section .text:
      12e:	80 e0       	ldi	r24, 0x00	; 0
      130:	08 95       	ret
 
-00000132 <_Z9i2c_writeh>:
+00000132 <_Z11I2C_M_writeh>:
      132:	83 b9       	out	0x03, r24	; 3
      134:	84 e8       	ldi	r24, 0x84	; 132
      136:	86 bf       	out	0x36, r24	; 54
      138:	06 b6       	in	r0, 0x36	; 54
      13a:	07 fe       	sbrs	r0, 7
-     13c:	fd cf       	rjmp	.-6      	; 0x138 <_Z9i2c_writeh+0x6>
+     13c:	fd cf       	rjmp	.-6      	; 0x138 <_Z11I2C_M_writeh+0x6>
      13e:	91 b1       	in	r25, 0x01	; 1
      140:	98 7f       	andi	r25, 0xF8	; 248
      142:	81 e0       	ldi	r24, 0x01	; 1
      144:	98 32       	cpi	r25, 0x28	; 40
-     146:	09 f4       	brne	.+2      	; 0x14a <_Z9i2c_writeh+0x18>
+     146:	09 f4       	brne	.+2      	; 0x14a <_Z11I2C_M_writeh+0x18>
      148:	80 e0       	ldi	r24, 0x00	; 0
      14a:	08 95       	ret
 
@@ -1919,8 +1919,8 @@ Disassembly of section .text:
      e80:	cf 01       	movw	r24, r30
      e82:	0e 94 46 04 	call	0x88c	; 0x88c <_ZN13Character_LCD4InitEv>
 	
-	i2c_init();
-     e86:	0e 94 55 00 	call	0xaa	; 0xaa <_Z8i2c_initv>
+	I2C_M_init();
+     e86:	0e 94 55 00 	call	0xaa	; 0xaa <_Z10I2C_M_initv>
 	LCD1.SendString("TWBR :");
      e8a:	60 e6       	ldi	r22, 0x60	; 96
      e8c:	70 e0       	ldi	r23, 0x00	; 0
@@ -1986,7 +1986,7 @@ Disassembly of section .text:
      ef4:	17 ba       	out	0x17, r1	; 23
 }
 
-void i2c_stop(void)
+void I2C_M_stop(void)
 {
 	// transmit STOP condition
 	TWCR = (1<<TWINT) | (1<<TWEN) | (1<<TWSTO);
@@ -2044,13 +2044,13 @@ void i2c_stop(void)
      f4c:	86 e8       	ldi	r24, 0x86	; 134
      f4e:	90 e0       	ldi	r25, 0x00	; 0
      f50:	0e 94 0e 07 	call	0xe1c	; 0xe1c <_ZN13Character_LCD9INTNumberEf>
-		i2c_start(ADDRESS <<1 | I2C_WRITE);
+		I2C_M_start(ADDRESS <<1 | I2C_WRITE);
      f54:	8c 2f       	mov	r24, r28
      f56:	88 0f       	add	r24, r24
-     f58:	0e 94 7c 00 	call	0xf8	; 0xf8 <_Z9i2c_starth>
-		i2c_write(PINA);
+     f58:	0e 94 7c 00 	call	0xf8	; 0xf8 <_Z11I2C_M_starth>
+		I2C_M_write(PINA);
      f5c:	89 b3       	in	r24, 0x19	; 25
-     f5e:	0e 94 99 00 	call	0x132	; 0x132 <_Z9i2c_writeh>
+     f5e:	0e 94 99 00 	call	0x132	; 0x132 <_Z11I2C_M_writeh>
      f62:	d6 bf       	out	0x36, r29	; 54
      f64:	2f ef       	ldi	r18, 0xFF	; 255
      f66:	89 e6       	ldi	r24, 0x69	; 105
@@ -2063,9 +2063,9 @@ void i2c_stop(void)
      f74:	00 00       	nop
      f76:	c0 cf       	rjmp	.-128    	; 0xef8 <main+0xb6>
 
-00000f78 <_GLOBAL__sub_I__Z8i2c_initv>:
+00000f78 <_GLOBAL__sub_I__Z10I2C_M_initv>:
 #include <util/delay.h>
-#include <D:\GitHub\LED-I2C\LED-I2C Lib\i2c_master.c>
+#include <D:\GitHub\LED-I2C\LED-I2C Lib\I2C.c>
 #include <D:\GitHub\LCD-Lib-Cplusplus\LIB\CharacterLCD.h>
 #include <D:\GitHub\LCD-Lib-Cplusplus\LIB\CharacterLCD.cpp>
 char data_received;

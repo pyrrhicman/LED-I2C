@@ -6,20 +6,22 @@
 #define F_CPU 8000000UL
 #define _LCD_LIB_
 
-#include <stdio.h>
-#include <string.h>
-
-#include <avr/io.h>
-#include <util/delay.h>
-#include <D:\GitHub\LED-I2C\LED-I2C Lib\i2c_master.c>
-#include <D:\GitHub\LCD-Lib-Cplusplus\LIB\CharacterLCD.h>
-#include <D:\GitHub\LCD-Lib-Cplusplus\LIB\CharacterLCD.cpp>
-char data_received;
-Character_LCD LCD1;
 #define SLAVE_1_ADRR 0b00000010
 #define SLAVE_2_ADRR 0b00000100
 #define SLAVE_3_ADRR 0b00001000
 #define SLAVE_4_ADRR 0b00010000
+#include <stdio.h>
+#include <string.h>
+
+
+#include <avr/io.h>
+#include <util/delay.h>
+#include <D:\GitHub\LED-I2C\LED-I2C Lib\I2C.c>
+#include <D:\GitHub\LCD-Lib-Cplusplus\LIB\CharacterLCD.h>
+#include <D:\GitHub\LCD-Lib-Cplusplus\LIB\CharacterLCD.cpp>
+char data_received;
+Character_LCD LCD1;
+
 int main(void)
 {
 	LCD1.SetRSPin (ADD(PORTD),ADD(DDRD),0);
@@ -31,7 +33,7 @@ int main(void)
 	LCD1.SetD7Pin (ADD(PORTD),ADD(DDRD),6);
 	LCD1.Init();
 	
-	i2c_init();
+	I2C_M_init();
 	LCD1.SendString("TWBR :");
 	LCD1.INTNumber((int)TWBR);
 	LCD1.GotoXY(1,1);
@@ -59,9 +61,9 @@ int main(void)
 		LCD1.INTNumber((int)PINA);	
 		LCD1.SendString("ADDRESS : ",1,1);
 		LCD1.INTNumber((int)ADDRESS);
-		i2c_start(ADDRESS <<1 | I2C_WRITE);
-		i2c_write(PINA);
-		i2c_stop();
+		I2C_M_start(ADDRESS <<1 | I2C_WRITE);
+		I2C_M_write(PINA);
+		I2C_M_stop();
 		_delay_ms(1000);
 		
 		
