@@ -29,7 +29,7 @@ int main(void)
 	LCD1.SetD5Pin (ADD(PORTD),ADD(DDRD),4);
 	LCD1.SetD6Pin (ADD(PORTD),ADD(DDRD),5);
 	LCD1.SetD7Pin (ADD(PORTD),ADD(DDRD),6);
-	LCD1.Init(16,2);
+	LCD1.Init();
 	
 	i2c_init();
 	LCD1.SendString("TWBR :");
