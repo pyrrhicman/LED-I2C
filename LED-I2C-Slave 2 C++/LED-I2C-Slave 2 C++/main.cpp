@@ -1,6 +1,4 @@
 /*
- * LED-I2C-Slave C++.cpp
- *
  * Created: 4/16/2018 10:37:25 PM
  * Author : Mohammad
  */ 
@@ -13,7 +11,7 @@ volatile uint8_t i2c_RX_buff, i2c_TX_buff;
 volatile unsigned char RX_point=0, TX_point=0;
 volatile bool i2c_packet_reveived=false;
 
-#define I2C_ADDR 0b00000010
+#define I2C_ADDR 0b00000100
 volatile uint8_t data;
 
 void I2C_S_received(uint8_t received_data){
@@ -36,8 +34,8 @@ int main(void)
     /* Replace with your application code */
     while (1) 
     {
-	_delay_ms(2000);
-	PORTA = 0;
+		_delay_ms(2000);
+		PORTA = 0;
     }
 }
 

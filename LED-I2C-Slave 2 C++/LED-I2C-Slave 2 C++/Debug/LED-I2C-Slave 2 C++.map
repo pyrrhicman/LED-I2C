@@ -502,11 +502,11 @@ END GROUP
  *(.debug_frame)
  .debug_frame   0x00000000      0x224 main.o
 
-.debug_str      0x00000000      0x63c
+.debug_str      0x00000000      0x640
  *(.debug_str)
  .debug_str     0x00000000      0x196 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.2.150/gcc/dev/atmega32/avr5/crtatmega32.o
- .debug_str     0x00000196      0x4a6 main.o
-                                0x4e4 (size before relaxing)
+ .debug_str     0x00000196      0x4aa main.o
+                                0x4e8 (size before relaxing)
 
 .debug_loc      0x00000000      0x8c4
  *(.debug_loc)
@@ -536,5 +536,5 @@ END GROUP
 
 .debug_macro
  *(.debug_macro)
-OUTPUT(LED-I2C-Slave C++.elf elf32-avr)
+OUTPUT(LED-I2C-Slave 2 C++.elf elf32-avr)
 LOAD linker stubs

@@ -25,10 +25,11 @@ void I2C_init(uint8_t address)
 void I2C_stop(void)
 {
   // clear acknowledge and enable bits
-  cli();
+  //Frequently, interrupts are being disabled for periods of time in order to perform certain operations without being disturbed
+  cli(); //cli clears the global interrupt flag in SREG so prevent any form of interrupt occurring.
   TWCR = 0;
   TWAR = 0;
-  sei();
+  sei(); //While sei sets the bit and switches interrupts on. 
 }
 
 ISR(TWI_vect)

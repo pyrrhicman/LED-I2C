@@ -1,5 +1,5 @@
 
-LED-I2C-Slave C++.elf:     file format elf32-avr
+LED-I2C-Slave 2 C++.elf:     file format elf32-avr
 
 Sections:
 Idx Name          Size      VMA       LMA       File off  Algn
@@ -23,11 +23,11 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   CONTENTS, READONLY, DEBUGGING
   9 .debug_frame  00000224  00000000  00000000  00001cdc  2**2
                   CONTENTS, READONLY, DEBUGGING
- 10 .debug_str    0000063c  00000000  00000000  00001f00  2**0
+ 10 .debug_str    00000640  00000000  00000000  00001f00  2**0
                   CONTENTS, READONLY, DEBUGGING
- 11 .debug_loc    000008c4  00000000  00000000  0000253c  2**0
+ 11 .debug_loc    000008c4  00000000  00000000  00002540  2**0
                   CONTENTS, READONLY, DEBUGGING
- 12 .debug_ranges 000000c8  00000000  00000000  00002e00  2**0
+ 12 .debug_ranges 000000c8  00000000  00000000  00002e04  2**0
                   CONTENTS, READONLY, DEBUGGING
 
 Disassembly of section .text:
@@ -235,7 +235,7 @@ void I2C_S_setCallbacks(void (*recv)(uint8_t), void (*req)())
 void setup(){
 	I2C_S_setCallbacks(I2C_S_received,I2C_S_requested);
 	I2C_S_init(I2C_ADDR);
- 152:	82 e0       	ldi	r24, 0x02	; 2
+ 152:	84 e0       	ldi	r24, 0x04	; 4
  154:	0e 94 48 00 	call	0x90	; 0x90 <_Z10I2C_S_inith>
  158:	08 95       	ret
 
@@ -267,8 +267,8 @@ int main(void)
     /* Replace with your application code */
     while (1) 
     {
-	_delay_ms(2000);
-	PORTA = 0;
+		_delay_ms(2000);
+		PORTA = 0;
  174:	1b ba       	out	0x1b, r1	; 27
  176:	f5 cf       	rjmp	.-22     	; 0x162 <main+0x8>
 

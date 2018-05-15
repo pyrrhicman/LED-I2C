@@ -12,9 +12,9 @@
     <OutputFileName>$(MSBuildProjectName)</OutputFileName>
     <OutputFileExtension>.elf</OutputFileExtension>
     <OutputDirectory>$(MSBuildProjectDirectory)\$(Configuration)</OutputDirectory>
-    <AssemblyName>LED-I2C Cplusplus</AssemblyName>
-    <Name>LED-I2C Cplusplus</Name>
-    <RootNamespace>LED-I2C Cplusplus</RootNamespace>
+    <AssemblyName>LED-I2C-Slave 2 C++</AssemblyName>
+    <Name>LED-I2C-Slave 2 C++</Name>
+    <RootNamespace>LED-I2C-Slave 2 C++</RootNamespace>
     <ToolchainFlavour>Native</ToolchainFlavour>
     <KeepTimersRunning>true</KeepTimersRunning>
     <OverrideVtor>false</OverrideVtor>
