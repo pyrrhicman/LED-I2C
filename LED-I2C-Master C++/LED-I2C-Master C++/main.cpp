@@ -65,6 +65,7 @@ int main(void)
 		_delay_ms(10);
 	
 		I2C_M_receive(ADDRESS,receivedDATA,1);
+
 		_delay_ms(10);
 		LCD1.Goto(0,1);
 		LCD1.SendString("READ: ");

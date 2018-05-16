@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='yes'?>
 <WORKSPACE>
  <FRAME activewindow="0">
-  <PLACEMENT>2c00000002000000030000000083ffff0083ffffffffffffffffffff77000000760000009306000021030000</PLACEMENT>
+  <PLACEMENT>2c0000000200000003000000ffffffffffffffffffffffffffffffffc901000028010000e5070000d3030000</PLACEMENT>
   <WINDOW type="default" module="ISIS"/>
  </FRAME>
  <MODULE name="VSMDEBUG">
@@ -180,7 +180,7 @@
    <POPUP w="695" x="513" flags="00000000" y="169" h="453" pid="0" iid="4">
     <PROPERTIES/>
    </POPUP>
-   <POPUP w="927" x="970" flags="00008023" y="529" h="511" pid="0" iid="26">
+   <POPUP w="927" x="1320" flags="00008023" y="290" h="688" pid="0" iid="26">
     <PROPERTIES>
      <ITEM name="ComboBox1000">S</ITEM>
      <ITEM name="ComboBox1001">Sr</ITEM>

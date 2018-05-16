@@ -146,8 +146,10 @@ uint8_t I2C_M_receive(uint8_t address, uint8_t* data, uint16_t length)
 {
 	if (I2C_M_start(address<<1 | I2C_READ)) return 1;
 	
-	for (uint16_t i = 0; i < (length-1); i++)  data[i] = I2C_M_read_ack();
-	
+	for (uint16_t i = 0; i < (length-1); i++)	//it doesn't run at all for 1 byte
+	{
+		  data[i] = I2C_M_read_ack();
+	}
 	
 	data[(length-1)] = I2C_M_read_nack();
 	
@@ -155,10 +157,6 @@ uint8_t I2C_M_receive(uint8_t address, uint8_t* data, uint16_t length)
 	
 	return 0;
 }
-
-
-
-
 
 uint8_t I2C_M_writeReg(uint8_t devaddr, uint8_t regaddr, uint8_t* data, uint16_t length)
 {
@@ -194,7 +192,6 @@ uint8_t I2C_M_readReg(uint8_t devaddr, uint8_t regaddr, uint8_t* data, uint16_t 
 
 	return 0;
 }
-
 
 
 

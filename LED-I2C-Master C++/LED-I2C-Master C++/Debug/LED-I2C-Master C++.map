@@ -683,10 +683,10 @@ END GROUP
  .debug_abbrev  0x00000000      0x4a3 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.2.150/gcc/dev/atmega32/avr5/crtatmega32.o
  .debug_abbrev  0x000004a3      0x438 main.o
 
-.debug_line     0x00000000      0xc9c
+.debug_line     0x00000000      0xca4
  *(.debug_line .debug_line.* .debug_line_end)
  .debug_line    0x00000000      0x115 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.2.150/gcc/dev/atmega32/avr5/crtatmega32.o
- .debug_line    0x00000115      0xb87 main.o
+ .debug_line    0x00000115      0xb8f main.o
 
 .debug_frame    0x00000000      0x3d0
  *(.debug_frame)
