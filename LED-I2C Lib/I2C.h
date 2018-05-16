@@ -23,11 +23,11 @@ void I2C_M_stop(void);
 void I2C_S_init(uint8_t address);
 void I2C_S_stop(void);
 void I2C_S_setCallbacks(void (*recv)(uint8_t), void (*req)());
-
-inline void __attribute__((always_inline)) I2C_S_transmitByte(uint8_t data)
+void I2C_S_transmitByte(uint8_t data);
+/*inline void __attribute__((always_inline)) I2C_S_transmitByte(uint8_t data)
 {
 	TWDR = data;
-}
+}*/
 
 ISR(TWI_vect);
 #endif // I2C_MASTER_H

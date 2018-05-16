@@ -59,6 +59,7 @@ int main(void)
 		ADDRESS = PINB & 0b11111110;
 		SendDATA[0]= PINA;
 		I2C_M_transmit(ADDRESS,SendDATA,1);	
+		_delay_ms(10);
 		LCD1.Goto(0,0);
 		LCD1.SendString("SEND: ");
 		LCD1.SendInteger((int)SendDATA[0]);
@@ -68,6 +69,7 @@ int main(void)
 		_delay_ms(10);
 	
 		I2C_M_receive(ADDRESS,receivedDATA,1);
+		_delay_ms(10);
 		LCD1.Goto(0,1);
 		LCD1.SendString("READ: ");
 		LCD1.SendInteger((int)receivedDATA[0]);	

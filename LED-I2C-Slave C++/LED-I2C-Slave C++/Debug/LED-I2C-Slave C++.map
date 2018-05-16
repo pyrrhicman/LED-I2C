@@ -74,6 +74,8 @@ Discarded input sections
                 0x00000000       0x12 main.o
  .text._Z10I2C_S_stopv
                 0x00000000        0xa main.o
+ .text._Z18I2C_S_transmitByteh
+                0x00000000        0x4 main.o
  .text._ZN6CH_LCD10CursorModeEi
                 0x00000000       0x48 main.o
  .text._ZN6CH_LCD10SendDoubleEdi
@@ -406,7 +408,7 @@ END GROUP
 .rela.plt
  *(.rela.plt)
 
-.text           0x00000000      0xc74
+.text           0x00000000      0xd0a
  *(.vectors)
  .vectors       0x00000000       0x54 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.2.150/gcc/dev/atmega32/avr5/crtatmega32.o
                 0x00000000                __vector_default
@@ -491,59 +493,59 @@ END GROUP
                 0x000000aa                . = ALIGN (0x2)
  *(.text.*)
  .text._Z14I2C_S_receivedh
-                0x000000aa        0x6 main.o
+                0x000000aa        0xe main.o
                 0x000000aa                _Z14I2C_S_receivedh
  .text._Z15I2C_S_requestedv
-                0x000000b0        0x6 main.o
-                0x000000b0                _Z15I2C_S_requestedv
+                0x000000b8       0x16 main.o
+                0x000000b8                _Z15I2C_S_requestedv
  .text._Z10I2C_S_inith
-                0x000000b6        0xe main.o
-                0x000000b6                _Z10I2C_S_inith
+                0x000000ce        0xe main.o
+                0x000000ce                _Z10I2C_S_inith
  .text.__vector_19
-                0x000000c4       0x9c main.o
-                0x000000c4                __vector_19
+                0x000000dc       0x9c main.o
+                0x000000dc                __vector_19
  .text._ZN6CH_LCDC2Ev
-                0x00000160       0x3e main.o
-                0x00000160                _ZN6CH_LCDC2Ev
-                0x00000160                _ZN6CH_LCDC1Ev
+                0x00000178       0x3e main.o
+                0x00000178                _ZN6CH_LCDC2Ev
+                0x00000178                _ZN6CH_LCDC1Ev
  .text._ZN6CH_LCD11SendCommandEhhh
-                0x0000019e      0x4e4 main.o
-                0x0000019e                _ZN6CH_LCD11SendCommandEhhh
+                0x000001b6      0x4e4 main.o
+                0x000001b6                _ZN6CH_LCD11SendCommandEhhh
  .text._ZN6CH_LCD4InitEv
-                0x00000682      0x284 main.o
-                0x00000682                _ZN6CH_LCD4InitEv
+                0x0000069a      0x284 main.o
+                0x0000069a                _ZN6CH_LCD4InitEv
  .text._ZN6CH_LCD8SendCharEh
-                0x00000906        0xc main.o
-                0x00000906                _ZN6CH_LCD8SendCharEh
+                0x0000091e        0xc main.o
+                0x0000091e                _ZN6CH_LCD8SendCharEh
  .text._ZN6CH_LCD10SendStringEPc
-                0x00000912       0x2a main.o
-                0x00000912                _ZN6CH_LCD10SendStringEPc
+                0x0000092a       0x2a main.o
+                0x0000092a                _ZN6CH_LCD10SendStringEPc
  .text._ZN6CH_LCD11SendIntegerEj
-                0x0000093c      0x1e6 main.o
-                0x0000093c                _ZN6CH_LCD11SendIntegerEj
+                0x00000954      0x1e6 main.o
+                0x00000954                _ZN6CH_LCD11SendIntegerEj
  .text._ZN6CH_LCD5ClearEv
-                0x00000b22        0xc main.o
-                0x00000b22                _ZN6CH_LCD5ClearEv
+                0x00000b3a        0xc main.o
+                0x00000b3a                _ZN6CH_LCD5ClearEv
  .text._ZN6CH_LCD4GotoEii
-                0x00000b2e       0x24 main.o
-                0x00000b2e                _ZN6CH_LCD4GotoEii
+                0x00000b46       0x24 main.o
+                0x00000b46                _ZN6CH_LCD4GotoEii
  .text._Z5setupv
-                0x00000b52       0x20 main.o
-                0x00000b52                _Z5setupv
- .text.main     0x00000b72       0xca main.o
-                0x00000b72                main
+                0x00000b6a       0x20 main.o
+                0x00000b6a                _Z5setupv
+ .text.main     0x00000b8a      0x148 main.o
+                0x00000b8a                main
  .text._GLOBAL__sub_I__Z10I2C_M_initv
-                0x00000c3c        0xa main.o
+                0x00000cd2        0xa main.o
  .text.libgcc.mul
-                0x00000c46       0x1e c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_umulhisi3.o)
-                0x00000c46                __umulhisi3
- .text.libgcc   0x00000c64        0xc c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_tablejump2.o)
-                0x00000c64                __tablejump2__
-                0x00000c70                . = ALIGN (0x2)
+                0x00000cdc       0x1e c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_umulhisi3.o)
+                0x00000cdc                __umulhisi3
+ .text.libgcc   0x00000cfa        0xc c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_tablejump2.o)
+                0x00000cfa                __tablejump2__
+                0x00000d06                . = ALIGN (0x2)
  *(.fini9)
- .fini9         0x00000c70        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_exit.o)
-                0x00000c70                _exit
-                0x00000c70                exit
+ .fini9         0x00000d06        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_exit.o)
+                0x00000d06                _exit
+                0x00000d06                exit
  *(.fini9)
  *(.fini8)
  *(.fini8)
@@ -562,11 +564,11 @@ END GROUP
  *(.fini1)
  *(.fini1)
  *(.fini0)
- .fini0         0x00000c70        0x4 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_exit.o)
+ .fini0         0x00000d06        0x4 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_exit.o)
  *(.fini0)
-                0x00000c74                _etext = .
+                0x00000d0a                _etext = .
 
-.data           0x00800060       0x22 load address 0x00000c74
+.data           0x00800060       0x3a load address 0x00000d0a
                 0x00800060                PROVIDE (__data_start, .)
  *(.data)
  *(.data*)
@@ -574,35 +576,40 @@ END GROUP
  *(.rodata)
  *(.rodata*)
  .rodata.str1.1
-                0x00800060       0x21 main.o
+                0x00800060       0x39 main.o
  *(.gnu.linkonce.r*)
-                0x00800082                . = ALIGN (0x2)
- *fill*         0x00800081        0x1 
-                0x00800082                _edata = .
-                0x00800082                PROVIDE (__data_end, .)
+                0x0080009a                . = ALIGN (0x2)
+ *fill*         0x00800099        0x1 
+                0x0080009a                _edata = .
+                0x0080009a                PROVIDE (__data_end, .)
 
-.bss            0x00800082       0x1b
-                0x00800082                PROVIDE (__bss_start, .)
+.bss            0x0080009a       0x1e
+                0x0080009a                PROVIDE (__bss_start, .)
  *(.bss)
  *(.bss*)
- .bss.data      0x00800082        0x1 main.o
-                0x00800082                data
- .bss.LCD1      0x00800083       0x16 main.o
-                0x00800083                LCD1
+ .bss.cleanTimer
+                0x0080009a        0x2 main.o
+                0x0080009a                cleanTimer
+ .bss.sentDATA  0x0080009c        0x1 main.o
+                0x0080009c                sentDATA
+ .bss.recDATA   0x0080009d        0x1 main.o
+                0x0080009d                recDATA
+ .bss.LCD1      0x0080009e       0x16 main.o
+                0x0080009e                LCD1
  .bss._ZL9I2C_S_req
-                0x00800099        0x2 main.o
+                0x008000b4        0x2 main.o
  .bss._ZL10I2C_S_recv
-                0x0080009b        0x2 main.o
+                0x008000b6        0x2 main.o
  *(COMMON)
-                0x0080009d                PROVIDE (__bss_end, .)
-                0x00000c74                __data_load_start = LOADADDR (.data)
-                0x00000c96                __data_load_end = (__data_load_start + SIZEOF (.data))
+                0x008000b8                PROVIDE (__bss_end, .)
+                0x00000d0a                __data_load_start = LOADADDR (.data)
+                0x00000d44                __data_load_end = (__data_load_start + SIZEOF (.data))
 
-.noinit         0x0080009d        0x0
+.noinit         0x008000b8        0x0
                 [!provide]                PROVIDE (__noinit_start, .)
  *(.noinit*)
                 [!provide]                PROVIDE (__noinit_end, .)
-                0x0080009d                _end = .
+                0x008000b8                _end = .
                 [!provide]                PROVIDE (__heap_start, .)
 
 .eeprom         0x00810000        0x0
@@ -667,42 +674,42 @@ END GROUP
 .debug_sfnames
  *(.debug_sfnames)
 
-.debug_aranges  0x00000000      0x108
+.debug_aranges  0x00000000      0x110
  *(.debug_aranges)
  .debug_aranges
-                0x00000000      0x108 main.o
+                0x00000000      0x110 main.o
 
 .debug_pubnames
  *(.debug_pubnames)
 
-.debug_info     0x00000000     0x1f54
+.debug_info     0x00000000     0x20c8
  *(.debug_info .gnu.linkonce.wi.*)
  .debug_info    0x00000000      0x4e6 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.2.150/gcc/dev/atmega32/avr5/crtatmega32.o
- .debug_info    0x000004e6     0x1a6e main.o
+ .debug_info    0x000004e6     0x1be2 main.o
 
 .debug_abbrev   0x00000000      0x8df
  *(.debug_abbrev)
  .debug_abbrev  0x00000000      0x4a3 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.2.150/gcc/dev/atmega32/avr5/crtatmega32.o
  .debug_abbrev  0x000004a3      0x43c main.o
 
-.debug_line     0x00000000      0xc21
+.debug_line     0x00000000      0xc7c
  *(.debug_line .debug_line.* .debug_line_end)
  .debug_line    0x00000000      0x115 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.2.150/gcc/dev/atmega32/avr5/crtatmega32.o
- .debug_line    0x00000115      0xb0c main.o
+ .debug_line    0x00000115      0xb67 main.o
 
-.debug_frame    0x00000000      0x3b8
+.debug_frame    0x00000000      0x3c8
  *(.debug_frame)
- .debug_frame   0x00000000      0x3b8 main.o
+ .debug_frame   0x00000000      0x3c8 main.o
 
-.debug_str      0x00000000      0xaaf
+.debug_str      0x00000000      0xad3
  *(.debug_str)
  .debug_str     0x00000000      0x196 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.2.150/gcc/dev/atmega32/avr5/crtatmega32.o
- .debug_str     0x00000196      0x919 main.o
-                                0x973 (size before relaxing)
+ .debug_str     0x00000196      0x93d main.o
+                                0x997 (size before relaxing)
 
-.debug_loc      0x00000000     0x1baa
+.debug_loc      0x00000000     0x1c28
  *(.debug_loc)
- .debug_loc     0x00000000     0x1baa main.o
+ .debug_loc     0x00000000     0x1c28 main.o
 
 .debug_macinfo
  *(.debug_macinfo)
@@ -722,9 +729,9 @@ END GROUP
 .debug_pubtypes
  *(.debug_pubtypes)
 
-.debug_ranges   0x00000000      0x128
+.debug_ranges   0x00000000      0x130
  *(.debug_ranges)
- .debug_ranges  0x00000000      0x128 main.o
+ .debug_ranges  0x00000000      0x130 main.o
 
 .debug_macro
  *(.debug_macro)

@@ -7,8 +7,6 @@
 #include <math.h>
 #include <avr/interrupt.h>
 #include "I2C.h"
-
-
 #define F_SCL 100000UL // SCL frequency
 #define TWBR_val ((F_CPU - (16*F_SCL)) / (2 * (F_SCL * Prescaler)))
 
@@ -115,6 +113,8 @@ uint8_t I2C_M_receive(uint8_t address, uint8_t* data, uint16_t length)
 	for (uint16_t i = 0; i < (length-1); i++)
 	{
 		data[i] = I2C_M_read_ack();
+		
+		
 	}
 	data[(length-1)] = I2C_M_read_nack();
 	
@@ -190,6 +190,11 @@ void I2C_S_stop(void)
 	TWCR = 0;
 	TWAR = 0;
 	sei(); //While sei sets the bit and switches interrupts on.
+}
+
+void I2C_S_transmitByte(uint8_t data)
+{
+	TWDR = data;
 }
 
 ISR(TWI_vect)

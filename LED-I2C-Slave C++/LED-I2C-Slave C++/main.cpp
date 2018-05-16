@@ -16,13 +16,17 @@ volatile unsigned char RX_point=0, TX_point=0;
 volatile bool i2c_packet_reveived=false;
 
 #define I2C_ADDR 2
-volatile uint8_t data;
-
+volatile uint8_t recDATA;
+volatile uint8_t sentDATA;
+unsigned int cleanTimer;
 void I2C_S_received(uint8_t received_data){
-	data = received_data;
+	recDATA = received_data;	
+	cleanTimer=0;
 }
 void I2C_S_requested(){
-	I2C_S_transmitByte(PINB);
+	sentDATA = PINB;
+	I2C_S_transmitByte(sentDATA);
+	cleanTimer=0;
 }
 
 
@@ -30,6 +34,7 @@ void setup(){
 	I2C_S_setCallbacks(I2C_S_received,I2C_S_requested);
 	I2C_S_init(I2C_ADDR);
 }
+
 int main(void)
 {
 	
@@ -41,23 +46,42 @@ int main(void)
 	LCD1.SetD6Pin (ADD(PORTD),ADD(DDRD),5);
 	LCD1.SetD7Pin (ADD(PORTD),ADD(DDRD),6);
 	LCD1.Init();
-		LCD1.Clear();
-		LCD1.Goto(0,1);
-		LCD1.SendString(" SETTING UP");
-		_delay_ms(1000);
-		LCD1.Clear();
+	LCD1.Clear();
+	LCD1.Goto(0,1);
+	LCD1.SendString(" SETTING UP");
+	_delay_ms(1000);
+	LCD1.Clear();
 	DDRA =255;
 	DDRB = 0;
 	setup();
-	
+	unsigned int cleaner ;	
     /* Replace with your application code */
     while (1) 
     {
-		PORTA = data;
-		LCD1.Goto(0,0);
-		LCD1.SendString(" received:");
-		LCD1.SendInteger((int)data);
-		LCD1.SendString("       ");
-    }
+			LCD1.Goto(0,0);
+			LCD1.SendString(" Last R:");
+			LCD1.SendInteger((int)recDATA);
+			LCD1.SendString("       ");		
+			LCD1.Goto(0,1);
+			LCD1.SendString(" Last S:");
+			LCD1.SendInteger((int)sentDATA);
+			LCD1.SendString("       ");	
+			
+			for (cleaner=0;cleaner <= 65000 ; cleaner++);
+			cleanTimer++;
+			if (cleanTimer>= 20)
+			{
+				LCD1.Clear();
+				LCD1.SendString("No Incoming Data");
+				_delay_ms(1000);
+				cleanTimer = 0;
+			}
+	}
 }
+		
+		
+		
+		
+		
+
 
