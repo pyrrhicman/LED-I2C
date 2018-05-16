@@ -13,21 +13,21 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   CONTENTS, READONLY
   4 .note.gnu.avr.deviceinfo 0000003c  00000000  00000000  00000e08  2**2
                   CONTENTS, READONLY
-  5 .debug_aranges 00000110  00000000  00000000  00000e44  2**0
+  5 .debug_aranges 00000120  00000000  00000000  00000e44  2**0
                   CONTENTS, READONLY, DEBUGGING
-  6 .debug_info   000020c8  00000000  00000000  00000f54  2**0
+  6 .debug_info   00002183  00000000  00000000  00000f64  2**0
                   CONTENTS, READONLY, DEBUGGING
-  7 .debug_abbrev 000008df  00000000  00000000  0000301c  2**0
+  7 .debug_abbrev 000008d8  00000000  00000000  000030e7  2**0
                   CONTENTS, READONLY, DEBUGGING
-  8 .debug_line   00000c7c  00000000  00000000  000038fb  2**0
+  8 .debug_line   00000cb6  00000000  00000000  000039bf  2**0
                   CONTENTS, READONLY, DEBUGGING
-  9 .debug_frame  000003c8  00000000  00000000  00004578  2**2
+  9 .debug_frame  000003f0  00000000  00000000  00004678  2**2
                   CONTENTS, READONLY, DEBUGGING
- 10 .debug_str    00000ad3  00000000  00000000  00004940  2**0
+ 10 .debug_str    00000b3f  00000000  00000000  00004a68  2**0
                   CONTENTS, READONLY, DEBUGGING
- 11 .debug_loc    00001c28  00000000  00000000  00005413  2**0
+ 11 .debug_loc    00001c12  00000000  00000000  000055a7  2**0
                   CONTENTS, READONLY, DEBUGGING
- 12 .debug_ranges 00000130  00000000  00000000  0000703b  2**0
+ 12 .debug_ranges 00000140  00000000  00000000  000071b9  2**0
                   CONTENTS, READONLY, DEBUGGING
 
 Disassembly of section .text:
@@ -1203,7 +1203,7 @@ void CH_LCD :: Home()
  924:	0e 94 db 00 	call	0x1b6	; 0x1b6 <_ZN6CH_LCD11SendCommandEhhh>
  928:	08 95       	ret
 
-0000092a <_ZN6CH_LCD10SendStringEPc>:
+0000092a <_ZN6CH_LCD10SendStringEPKc>:
  92a:	0f 93       	push	r16
  92c:	1f 93       	push	r17
  92e:	cf 93       	push	r28
@@ -1211,14 +1211,14 @@ void CH_LCD :: Home()
  932:	eb 01       	movw	r28, r22
  934:	68 81       	ld	r22, Y
  936:	66 23       	and	r22, r22
- 938:	41 f0       	breq	.+16     	; 0x94a <_ZN6CH_LCD10SendStringEPc+0x20>
+ 938:	41 f0       	breq	.+16     	; 0x94a <_ZN6CH_LCD10SendStringEPKc+0x20>
  93a:	8c 01       	movw	r16, r24
  93c:	21 96       	adiw	r28, 0x01	; 1
  93e:	c8 01       	movw	r24, r16
  940:	0e 94 8f 04 	call	0x91e	; 0x91e <_ZN6CH_LCD8SendCharEh>
  944:	69 91       	ld	r22, Y+
  946:	61 11       	cpse	r22, r1
- 948:	fa cf       	rjmp	.-12     	; 0x93e <_ZN6CH_LCD10SendStringEPc+0x14>
+ 948:	fa cf       	rjmp	.-12     	; 0x93e <_ZN6CH_LCD10SendStringEPKc+0x14>
  94a:	df 91       	pop	r29
  94c:	cf 91       	pop	r28
  94e:	1f 91       	pop	r17
@@ -1519,7 +1519,7 @@ void I2C_S_setCallbacks(void (*recv)(uint8_t), void (*req)())
 void setup(){
 	I2C_S_setCallbacks(I2C_S_received,I2C_S_requested);
 	I2C_S_init(I2C_ADDR);
- b82:	82 e0       	ldi	r24, 0x02	; 2
+ b82:	80 e1       	ldi	r24, 0x10	; 16
  b84:	0e 94 67 00 	call	0xce	; 0xce <_Z10I2C_S_inith>
  b88:	08 95       	ret
 
@@ -1592,7 +1592,7 @@ void setup(){
  be8:	70 e0       	ldi	r23, 0x00	; 0
  bea:	8e e9       	ldi	r24, 0x9E	; 158
  bec:	90 e0       	ldi	r25, 0x00	; 0
- bee:	0e 94 95 04 	call	0x92a	; 0x92a <_ZN6CH_LCD10SendStringEPc>
+ bee:	0e 94 95 04 	call	0x92a	; 0x92a <_ZN6CH_LCD10SendStringEPKc>
  bf2:	2f ef       	ldi	r18, 0xFF	; 255
  bf4:	89 e6       	ldi	r24, 0x69	; 105
  bf6:	98 e1       	ldi	r25, 0x18	; 24
@@ -1631,7 +1631,7 @@ void setup(){
  c28:	70 e0       	ldi	r23, 0x00	; 0
  c2a:	8e e9       	ldi	r24, 0x9E	; 158
  c2c:	90 e0       	ldi	r25, 0x00	; 0
- c2e:	0e 94 95 04 	call	0x92a	; 0x92a <_ZN6CH_LCD10SendStringEPc>
+ c2e:	0e 94 95 04 	call	0x92a	; 0x92a <_ZN6CH_LCD10SendStringEPKc>
 			LCD1.SendInteger((int)recDATA);
  c32:	60 91 9d 00 	lds	r22, 0x009D	; 0x80009d <recDATA>
  c36:	70 e0       	ldi	r23, 0x00	; 0
@@ -1643,7 +1643,7 @@ void setup(){
  c42:	70 e0       	ldi	r23, 0x00	; 0
  c44:	8e e9       	ldi	r24, 0x9E	; 158
  c46:	90 e0       	ldi	r25, 0x00	; 0
- c48:	0e 94 95 04 	call	0x92a	; 0x92a <_ZN6CH_LCD10SendStringEPc>
+ c48:	0e 94 95 04 	call	0x92a	; 0x92a <_ZN6CH_LCD10SendStringEPKc>
 			LCD1.Goto(0,1);
  c4c:	41 e0       	ldi	r20, 0x01	; 1
  c4e:	50 e0       	ldi	r21, 0x00	; 0
@@ -1657,7 +1657,7 @@ void setup(){
  c5e:	70 e0       	ldi	r23, 0x00	; 0
  c60:	8e e9       	ldi	r24, 0x9E	; 158
  c62:	90 e0       	ldi	r25, 0x00	; 0
- c64:	0e 94 95 04 	call	0x92a	; 0x92a <_ZN6CH_LCD10SendStringEPc>
+ c64:	0e 94 95 04 	call	0x92a	; 0x92a <_ZN6CH_LCD10SendStringEPKc>
 			LCD1.SendInteger((int)sentDATA);
  c68:	60 91 9c 00 	lds	r22, 0x009C	; 0x80009c <sentDATA>
  c6c:	70 e0       	ldi	r23, 0x00	; 0
@@ -1669,7 +1669,7 @@ void setup(){
  c78:	70 e0       	ldi	r23, 0x00	; 0
  c7a:	8e e9       	ldi	r24, 0x9E	; 158
  c7c:	90 e0       	ldi	r25, 0x00	; 0
- c7e:	0e 94 95 04 	call	0x92a	; 0x92a <_ZN6CH_LCD10SendStringEPc>
+ c7e:	0e 94 95 04 	call	0x92a	; 0x92a <_ZN6CH_LCD10SendStringEPKc>
  c82:	89 ee       	ldi	r24, 0xE9	; 233
  c84:	9d ef       	ldi	r25, 0xFD	; 253
  c86:	01 97       	sbiw	r24, 0x01	; 1
@@ -1696,7 +1696,7 @@ void setup(){
  cac:	70 e0       	ldi	r23, 0x00	; 0
  cae:	8e e9       	ldi	r24, 0x9E	; 158
  cb0:	90 e0       	ldi	r25, 0x00	; 0
- cb2:	0e 94 95 04 	call	0x92a	; 0x92a <_ZN6CH_LCD10SendStringEPc>
+ cb2:	0e 94 95 04 	call	0x92a	; 0x92a <_ZN6CH_LCD10SendStringEPKc>
  cb6:	2f ef       	ldi	r18, 0xFF	; 255
  cb8:	89 e6       	ldi	r24, 0x69	; 105
  cba:	98 e1       	ldi	r25, 0x18	; 24
@@ -1712,7 +1712,7 @@ void setup(){
  ccc:	10 92 9a 00 	sts	0x009A, r1	; 0x80009a <__data_end>
  cd0:	a2 cf       	rjmp	.-188    	; 0xc16 <main+0x8c>
 
-00000cd2 <_GLOBAL__sub_I__Z10I2C_M_initv>:
+00000cd2 <_GLOBAL__sub_I_status_CODE>:
 #include <avr/io.h>
 #include <util/delay.h>
 #include <D:\GitHub\LED-I2C\LED-I2C Lib\I2C.c>

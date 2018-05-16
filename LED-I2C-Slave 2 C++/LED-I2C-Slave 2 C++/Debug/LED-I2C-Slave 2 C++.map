@@ -50,16 +50,22 @@ Discarded input sections
  .text          0x00000000        0x0 main.o
  .data          0x00000000        0x0 main.o
  .bss           0x00000000        0x0 main.o
+ .text._Z23I2C_WAIT_FOR_TWINT_FLAGv
+                0x00000000        0x8 main.o
  .text._Z10I2C_M_initv
                 0x00000000       0x4e main.o
+ .text._Z10I2C_M_stopv
+                0x00000000        0x6 main.o
+ .text._Z20I2C_TWSR_STATUS_CODEv
+                0x00000000        0x6 main.o
  .text._Z11I2C_M_starth
-                0x00000000       0x3a main.o
+                0x00000000       0x40 main.o
  .text._Z11I2C_M_writeh
-                0x00000000       0x1a main.o
+                0x00000000       0x18 main.o
  .text._Z14I2C_M_read_ackv
-                0x00000000        0xe main.o
+                0x00000000        0xc main.o
  .text._Z15I2C_M_read_nackv
-                0x00000000        0xe main.o
+                0x00000000        0xc main.o
  .text._Z14I2C_M_transmithPhj
                 0x00000000       0x5c main.o
  .text._Z13I2C_M_receivehPhj
@@ -68,8 +74,6 @@ Discarded input sections
                 0x00000000       0x62 main.o
  .text._Z13I2C_M_readReghhPhj
                 0x00000000       0x84 main.o
- .text._Z10I2C_M_stopv
-                0x00000000        0x6 main.o
  .text._Z18I2C_S_setCallbacksPFvhEPFvvE
                 0x00000000       0x12 main.o
  .text._Z10I2C_S_stopv
@@ -92,6 +96,8 @@ Discarded input sections
                 0x00000000        0x1 main.o
  .bss.testing   0x00000000        0x1 main.o
  .bss.column    0x00000000        0x1 main.o
+ .bss.status_CODE
+                0x00000000        0x1 main.o
  .text          0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr5\libm.a(addsf3.o)
  .data          0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr5\libm.a(addsf3.o)
  .bss           0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr5\libm.a(addsf3.o)
@@ -534,7 +540,7 @@ END GROUP
                 0x00000b6a                _Z5setupv
  .text.main     0x00000b8a      0x148 main.o
                 0x00000b8a                main
- .text._GLOBAL__sub_I__Z10I2C_M_initv
+ .text._GLOBAL__sub_I_status_CODE
                 0x00000cd2        0xa main.o
  .text.libgcc.mul
                 0x00000cdc       0x1e c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_umulhisi3.o)
@@ -674,42 +680,42 @@ END GROUP
 .debug_sfnames
  *(.debug_sfnames)
 
-.debug_aranges  0x00000000      0x110
+.debug_aranges  0x00000000      0x120
  *(.debug_aranges)
  .debug_aranges
-                0x00000000      0x110 main.o
+                0x00000000      0x120 main.o
 
 .debug_pubnames
  *(.debug_pubnames)
 
-.debug_info     0x00000000     0x20cd
+.debug_info     0x00000000     0x2183
  *(.debug_info .gnu.linkonce.wi.*)
  .debug_info    0x00000000      0x4e6 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.2.150/gcc/dev/atmega32/avr5/crtatmega32.o
- .debug_info    0x000004e6     0x1be7 main.o
+ .debug_info    0x000004e6     0x1c9d main.o
 
-.debug_abbrev   0x00000000      0x8df
+.debug_abbrev   0x00000000      0x8d8
  *(.debug_abbrev)
  .debug_abbrev  0x00000000      0x4a3 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.2.150/gcc/dev/atmega32/avr5/crtatmega32.o
- .debug_abbrev  0x000004a3      0x43c main.o
+ .debug_abbrev  0x000004a3      0x435 main.o
 
-.debug_line     0x00000000      0xc7c
+.debug_line     0x00000000      0xcb6
  *(.debug_line .debug_line.* .debug_line_end)
  .debug_line    0x00000000      0x115 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.2.150/gcc/dev/atmega32/avr5/crtatmega32.o
- .debug_line    0x00000115      0xb67 main.o
+ .debug_line    0x00000115      0xba1 main.o
 
-.debug_frame    0x00000000      0x3c8
+.debug_frame    0x00000000      0x3f0
  *(.debug_frame)
- .debug_frame   0x00000000      0x3c8 main.o
+ .debug_frame   0x00000000      0x3f0 main.o
 
-.debug_str      0x00000000      0xad8
+.debug_str      0x00000000      0xb43
  *(.debug_str)
  .debug_str     0x00000000      0x196 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.2.150/gcc/dev/atmega32/avr5/crtatmega32.o
- .debug_str     0x00000196      0x942 main.o
-                                0x99c (size before relaxing)
+ .debug_str     0x00000196      0x9ad main.o
+                                0xa03 (size before relaxing)
 
-.debug_loc      0x00000000     0x1c28
+.debug_loc      0x00000000     0x1c12
  *(.debug_loc)
- .debug_loc     0x00000000     0x1c28 main.o
+ .debug_loc     0x00000000     0x1c12 main.o
 
 .debug_macinfo
  *(.debug_macinfo)
@@ -729,9 +735,9 @@ END GROUP
 .debug_pubtypes
  *(.debug_pubtypes)
 
-.debug_ranges   0x00000000      0x130
+.debug_ranges   0x00000000      0x140
  *(.debug_ranges)
- .debug_ranges  0x00000000      0x130 main.o
+ .debug_ranges  0x00000000      0x140 main.o
 
 .debug_macro
  *(.debug_macro)

@@ -13,21 +13,21 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   CONTENTS, READONLY
   4 .note.gnu.avr.deviceinfo 0000003c  00000000  00000000  00000e08  2**2
                   CONTENTS, READONLY
-  5 .debug_aranges 00000110  00000000  00000000  00000e44  2**0
+  5 .debug_aranges 00000120  00000000  00000000  00000e44  2**0
                   CONTENTS, READONLY, DEBUGGING
-  6 .debug_info   000020cd  00000000  00000000  00000f54  2**0
+  6 .debug_info   00002183  00000000  00000000  00000f64  2**0
                   CONTENTS, READONLY, DEBUGGING
-  7 .debug_abbrev 000008df  00000000  00000000  00003021  2**0
+  7 .debug_abbrev 000008d8  00000000  00000000  000030e7  2**0
                   CONTENTS, READONLY, DEBUGGING
-  8 .debug_line   00000c7c  00000000  00000000  00003900  2**0
+  8 .debug_line   00000cb6  00000000  00000000  000039bf  2**0
                   CONTENTS, READONLY, DEBUGGING
-  9 .debug_frame  000003c8  00000000  00000000  0000457c  2**2
+  9 .debug_frame  000003f0  00000000  00000000  00004678  2**2
                   CONTENTS, READONLY, DEBUGGING
- 10 .debug_str    00000ad8  00000000  00000000  00004944  2**0
+ 10 .debug_str    00000b43  00000000  00000000  00004a68  2**0
                   CONTENTS, READONLY, DEBUGGING
- 11 .debug_loc    00001c28  00000000  00000000  0000541c  2**0
+ 11 .debug_loc    00001c12  00000000  00000000  000055ab  2**0
                   CONTENTS, READONLY, DEBUGGING
- 12 .debug_ranges 00000130  00000000  00000000  00007044  2**0
+ 12 .debug_ranges 00000140  00000000  00000000  000071bd  2**0
                   CONTENTS, READONLY, DEBUGGING
 
 Disassembly of section .text:
@@ -1519,7 +1519,7 @@ void I2C_S_setCallbacks(void (*recv)(uint8_t), void (*req)())
 void setup(){
 	I2C_S_setCallbacks(I2C_S_received,I2C_S_requested);
 	I2C_S_init(I2C_ADDR);
- b82:	84 e0       	ldi	r24, 0x04	; 4
+ b82:	81 e1       	ldi	r24, 0x11	; 17
  b84:	0e 94 67 00 	call	0xce	; 0xce <_Z10I2C_S_inith>
  b88:	08 95       	ret
 
@@ -1712,7 +1712,7 @@ void setup(){
  ccc:	10 92 9a 00 	sts	0x009A, r1	; 0x80009a <__data_end>
  cd0:	a2 cf       	rjmp	.-188    	; 0xc16 <main+0x8c>
 
-00000cd2 <_GLOBAL__sub_I__Z10I2C_M_initv>:
+00000cd2 <_GLOBAL__sub_I_status_CODE>:
 #include <avr/io.h>
 #include <util/delay.h>
 #include <D:\GitHub\LED-I2C\LED-I2C Lib\I2C.c>

@@ -52,11 +52,7 @@ int main(void)
 	uint8_t SendDATA[1];
     while (1) 
     {
-		while((PINB & 0x01) ==1){
-		//LCD1.Clr();
-		
-		
-		ADDRESS = PINB & 0b11111110;
+		ADDRESS = PINB;
 		SendDATA[0]= PINA;
 		I2C_M_transmit(ADDRESS,SendDATA,1);	
 		_delay_ms(10);
@@ -78,7 +74,7 @@ int main(void)
 		LCD1.SendString("          ");
 		_delay_ms(10);
 		
-		}
+		
     }
 }
 

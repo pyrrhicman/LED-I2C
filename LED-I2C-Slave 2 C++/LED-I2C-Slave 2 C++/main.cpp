@@ -15,7 +15,7 @@ volatile uint8_t i2c_RX_buff, i2c_TX_buff;
 volatile unsigned char RX_point=0, TX_point=0;
 volatile bool i2c_packet_reveived=false;
 
-#define I2C_ADDR 4
+#define I2C_ADDR 0b00010001
 volatile uint8_t recDATA;
 volatile uint8_t sentDATA;
 unsigned int cleanTimer;
