@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='yes'?>
 <WORKSPACE>
  <FRAME activewindow="0">
-  <PLACEMENT>2c0000000200000003000000ffffffffffffffffffffffffffffffff6c010000ce0000008807000079030000</PLACEMENT>
+  <PLACEMENT>2c0000000200000003000000ffffffffffffffffffffffffffffffff6c010000ce000000c505000079030000</PLACEMENT>
   <WINDOW type="default" module="ISIS"/>
  </FRAME>
  <MODULE name="VSMDEBUG">
@@ -32,7 +32,7 @@
      <ITEM name="nItems">0</ITEM>
     </PROPERTIES>
    </POPUP>
-   <POPUP w="30" x="794" flags="00000008" y="318" h="16" pid="3" iid="1">
+   <POPUP w="226" x="794" flags="00000008" y="318" h="215" pid="3" iid="1">
     <PROPERTIES/>
    </POPUP>
    <POPUP w="8" x="814" flags="0000000a" y="338" h="1" pid="10" iid="1">
@@ -95,7 +95,7 @@
      <ITEM name="TopLineAddress">00000020</ITEM>
     </PROPERTIES>
    </POPUP>
-   <POPUP w="30" x="934" flags="00000008" y="458" h="16" pid="3" iid="2">
+   <POPUP w="226" x="934" flags="00000008" y="458" h="215" pid="3" iid="2">
     <PROPERTIES/>
    </POPUP>
    <POPUP w="8" x="954" flags="0000000a" y="478" h="1" pid="10" iid="2">
@@ -180,7 +180,7 @@
    <POPUP w="695" x="513" flags="00000000" y="169" h="453" pid="0" iid="4">
     <PROPERTIES/>
    </POPUP>
-   <POPUP w="927" x="1320" flags="00000022" y="290" h="688" pid="0" iid="26">
+   <POPUP w="927" x="993" flags="00000022" y="290" h="688" pid="0" iid="26">
     <PROPERTIES>
      <ITEM name="ComboBox1000">S</ITEM>
      <ITEM name="ComboBox1001">Sr</ITEM>
@@ -259,7 +259,7 @@
      <ITEM name="TopLineAddress">00000020</ITEM>
     </PROPERTIES>
    </POPUP>
-   <POPUP w="30" x="198" flags="00000008" y="289" h="16" pid="3" iid="5">
+   <POPUP w="226" x="198" flags="00000008" y="289" h="215" pid="3" iid="5">
     <PROPERTIES/>
    </POPUP>
    <POPUP w="8" x="218" flags="0000000a" y="309" h="1" pid="10" iid="5">
